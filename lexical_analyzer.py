@@ -106,6 +106,10 @@ def D_token_Integer(bufer,next_symbol):
         #all digit
         return True
     #first symbol is not non zero digit
+    if token[0] == '0':
+        if len(token) > 1:
+            if token[1] in define_digit:
+                PrintError(token,20)
     return False
 
 
@@ -126,7 +130,7 @@ def D_token_Char(bufer,next_symbol):
     #token = '1
     if token[0] == "'":
         #1 char
-        if token[1] in define_alphabet + define_special:
+        if token[1] in define_alphabet + define_special + define_digit + [' ']:
             #'1'3
             if len(token) > 3:
                 return False
@@ -137,6 +141,7 @@ def D_token_Char(bufer,next_symbol):
                     return True
                 #'11
                 else:
+                    PrintError(token,10)
                     return False
             #'1
             elif len(token) == 2:
@@ -157,6 +162,7 @@ def D_token_Char(bufer,next_symbol):
                         return False
                 #'\x'
                 else:
+                    PrintError(token,12)
                     return False
             #'\n
             elif len(token) == 3:
@@ -165,10 +171,17 @@ def D_token_Char(bufer,next_symbol):
                     return True
                 #'\x
                 else:
+                    PrintError(token,12)
                     return False
             #'\
             else:
                 return True
+        #'' , ''1
+        elif token[1] == "'":
+            if len(token) == 2:
+                return True
+            elif len(token) == 3:
+                return False
     return False
 
 
@@ -177,7 +190,8 @@ def D_token_String(bufer,next_symbol):
     print('D_token_String',token)
     if token[0] == '"':
         #"123"1
-        if token[-2] == '"':#end string whatever next_symbol
+        #"1
+        if token[-2] == '"' and len(token) > 2:#end string whatever next_symbol
             #"123\"1
             if token[-3] == '\\':
                 return True
@@ -185,6 +199,15 @@ def D_token_String(bufer,next_symbol):
             else:
                 return False
             return False
+        #""1
+        elif len(token) == 3 and token[1] == '"':
+            return False
+        #"\x"
+        elif len(token) > 2:
+            if token[1] == '\\':
+                if token[1:] not in define_escape_sequence:
+                    PrintError(token,30)
+            return True
         else:
             return True
     return False
@@ -225,6 +248,8 @@ def D_token_Seperator(symbol):
 
 def Append_Token_As_ExpectString(expect_string,bufer):
     token = ''.join(bufer)
+    print("Append_Token_As_ExpectString" , expect_string,token)
+
     if expect_string == 'vtype':
         tokens.append(('VTYPE',token))
     elif expect_string == 'keyword':
@@ -241,6 +266,7 @@ def Append_Token_As_ExpectString(expect_string,bufer):
         tokens.append(('BOOLEAN',token))
     elif expect_string == 'str':
         tokens.append(('STRING',token))
+    print(tokens)
 
 
 #Discriminate token
@@ -252,7 +278,7 @@ def Discriminate_token(expect,bufer,next_symbol):
                next_expect.append('vtype')
         elif expect[expect_index] == 'keyword':
             if D_token_Keyword(bufer,next_symbol):
-                next_expect.append('keyworld')
+                next_expect.append('keyword')
         elif expect[expect_index] == 'id':
             if D_token_Identifier(bufer,next_symbol):
                 next_expect.append('id')
@@ -272,10 +298,44 @@ def Discriminate_token(expect,bufer,next_symbol):
         elif expect[expect_index] == 'str':
             if D_token_String(bufer,next_symbol):
                 next_expect.append('str')
+                
     #append token
     if len(next_expect) == 0:
-        print('append token',expect[0],bufer)
-        Append_Token_As_ExpectString(expect[0],bufer)
+        #완성형만 필터
+        expect_isvaild = [False] * len(expect) 
+        for expect_index in range(len(expect)):
+            if expect[expect_index] == 'vtype':
+                if bufer in define_vtype:
+                    expect_isvaild[expect_index] = True
+
+            elif expect[expect_index] == 'keyword':
+                if bufer in define_keyword:
+                    expect_isvaild[expect_index] = True
+            elif expect[expect_index] == 'id':
+                expect_isvaild[expect_index] = True
+            #elif expect[expect_index] == 'seperator':
+            elif expect[expect_index] == 'op':
+                if bufer in define_operator:
+                    expect_isvaild[expect_index] = True
+            elif expect[expect_index] == 'int':
+                expect_isvaild[expect_index] = True
+            elif expect[expect_index] == 'char':
+                if bufer[0] == "'" and bufer[-1] == "'":
+                    expect_isvaild[expect_index] = True
+            elif expect[expect_index] == 'bool':
+                if bufer in define_boolean:
+                    expect_isvaild[expect_index] = True
+            elif expect[expect_index] == 'str':
+                if bufer[0] =='"' and bufer[-1] == '"':
+                    expect_isvaild[expect_index] = True
+        expect_token = expect[0]
+        for i in range(len(expect)):
+            if expect_isvaild[i] == True:
+                expect_token = expect[i]
+                break
+
+        print('append token',expect_token,bufer)
+        Append_Token_As_ExpectString(expect_token,bufer)
         bufer = []
     expect = next_expect
 
@@ -313,6 +373,36 @@ def Discriminate_first_symbol(symbol):
     print('Discriminate_fist_symbol: expect : ',expect)
 
     return bufer,expect
+
+
+def PrintError(token,errorcode):
+    sindex = 0
+    eindex = 0
+    pindex = index
+
+    while(input_string[pindex] != '\n' and pindex != 0):
+        pindex -= 1
+    if pindex == 0:
+        sindex = pindex
+    else:
+        sindex = pindex + 1
+
+    while(input_string[pindex] != '\n'):
+        pindex += 1
+    eindex =  pindex
+    print(input_string[sindex:eindex])
+
+    if errorcode == 10:
+        print("TypeError" , token , ": Charactor Type can has 1 charactor")
+    elif errorcode == 11:
+        print("TypeError" , token , ": Charactor Type must have 1 charactor")
+    elif errorcode == 12:
+        print("EscapeError" , token , ": Invaild Escape Charator")
+    elif errorcode == 20:
+        print("IntegerValueError", token , ": Invaild Integer Value")
+    elif errorcode == 30:
+        print("EscapeError" , token , ": Invaild Escape Charator")
+    exit(0)
 
 #seperator
 define_seperator = [';',',','.','(',')','[',']','{','}']
@@ -357,12 +447,11 @@ define_vtype_first_symbol = set([token[0] for token in define_vtype])
 
 
 input_file = open('input_string.txt','r')
-input_string = input_file.read() + '$'
+input_string = input_file.read() + '\n$'
 tokens = []
 bufer = []
 expect = []
 index = 0
-
 flag = 0
 
 while(input_string[index] != '$'):
@@ -387,6 +476,7 @@ while(input_string[index] != '$'):
     elif flag == 2:
         #not token next symbol
         index += 1
-        
-Append_Token_As_ExpectString(expect[0],bufer)
+
+if expect:
+    Append_Token_As_ExpectString(expect[0],bufer)
 print(tokens)
