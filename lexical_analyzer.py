@@ -1,30 +1,3 @@
-'''
- Input: -0
-- Output: <OP, ->, <INTEGER, 0>
-
-- Input: 0abc0
-- Output: <INTEGER, 0>, <ID, abc0>
-
-- Input: 123if
-- Output: <INTEGER, 123>, <IF>
-
-- Input: 123if0
-- Output: <INTEGER, 123>, <ID, if0>
-
-- Input: ' '
-- Output: <char, >
-
-- Input: a-1
-- Output: <ID, a>, <OP, ->, <INTEGER, 1>
-(Only in this example, you are required to consider the syntax of your program, i.e., the purpose of using the '-' symbol)
-
-- Input: int main(){char if123='1';int 0a=a+-1;return -0;}
-- Output: <VTYPE, int>, <ID, main>, <LPAREN>, <RPAREN>, <LBRACE>,
-<VTYPE, char>, <ID, if123>, <ASSIGN>, <CHAR, 1>, <SEMI>,
-<VTYPE, int>, <INTEGER, 0>, <ID, a>, <ASSIGN>, <ID, a>, <OP, +>, <INTEGER, -1>, <SEMI>,
-<RETURN>, <OP, ->, <INTEGER, 0>, <SEMI>, <RBRACE>
-'''
-
 def get_seperator_token_name(cur_char):
     if cur_char == '(':
         return 'LEFT_PAREN'
@@ -45,20 +18,23 @@ def get_seperator_token_name(cur_char):
     elif cur_char == ';':
         return 'SEMI_COLON'
 
-
+#id 의 start symbol 확인
 def D_id_start(char_token):
     if (char_token in define_alphabet) or char_token == '_':
         return True
     return False
 
+
+#digit인지 판별
 def D_digit(char_token):
     if char_token in define_digit:
         return True
     return False
 
+#identifer 인지 판별 (buffer와 next input symbol을 가지고 토큰 가능성여부를 반환함)
 def D_token_Identifier(bufer,next_symbol):
     token = ''.join(bufer) + next_symbol
-    print('D_token_Identifier',token)
+    #print('D_token_Identifier',token)
     #id-start
     if D_id_start(token[0]):
         for i in range(1,len(token)):
@@ -69,10 +45,10 @@ def D_token_Identifier(bufer,next_symbol):
         return True
     #not id-start
     return False
-
+#keyword 인지 판별 (buffer와 next input symbol을 가지고 토큰 가능성여부를 반환함)
 def D_token_Keyword(bufer,next_symbol):
     token = ''.join(bufer) + next_symbol
-    print('D_token_Keyword',token)
+    #print('D_token_Keyword',token)
     for keyword in define_keyword:
         #keyword = 'if'
         for i in range(len(keyword)):
@@ -80,10 +56,10 @@ def D_token_Keyword(bufer,next_symbol):
             if token == keyword[:i+1]:
                 return True
     return False
-
+#operator 인지 판별 (buffer와 next input symbol을 가지고 토큰 가능성여부를 반환함)
 def D_token_Operator(bufer,next_symbol):
     token = ''.join(bufer) + next_symbol
-    print('D_token_Operator',token)
+    #print('D_token_Operator',token)
     for operator in define_operator:
         #operator = <=
         for i in range(len(operator)):
@@ -91,31 +67,73 @@ def D_token_Operator(bufer,next_symbol):
             if token == operator[:i+1]:
                 return True
     return False
-
+#integer 인지 판별 (buffer와 next input symbol을 가지고 토큰 가능성여부를 반환함)
 def D_token_Integer(bufer,next_symbol):
     token = ''.join(bufer) + next_symbol
-    print('D_token_Integer',token)   
-    #up to 2 digit
-    #만약 token[0] 이 0 이라면, 뒤에 무엇이 오든간에 false를 반환해야함
-    #token[0] 이 0 이아닌 숫자라면, next_symbol 에 따라 t/f 반환
-    if token[0] in define_non_zero_digit:
-        for i in range(1,len(token)):
-            if token[i] not in define_digit:
-                #not digit
-                return False
-        #all digit
-        return True
-    #first symbol is not non zero digit
+    #print('D_token_Integer',token)   
+
     if token[0] == '0':
         if len(token) > 1:
-            if token[1] in define_digit:
-                PrintError(token,20)
-    return False
+            return False
+        return True
+    elif token[0] in ['+','-']:
+        #정수의 부호symbol은 이전 토큰이 operator일때 + - 을 정수의 부호로 지정한다
+        if len(tokens) > 0:
+            if tokens[-1][0] != 'OPERATOR':
+                return False
+        else:
+            return False
+
+        if len(token) == 1:
+            return True
+        if token[1] == '0':
+            if len(token) > 2:
+                #+01
+                return False
+            #+0
+            return True
+
+    #sign 있는 정수
+    if token[0] in ['+','-']:
+        #정수의 부호symbol은 이전 토큰이 operator일때 + - 을 정수의 부호로 지정한다
+        if len(tokens)> 0:
+            if tokens[-1][0] != 'OPERATOR':
+                return False
+        else:
+            return False
+        # +10 -123
+        if len(token) > 2:
+            if token[-1] not in define_digit:
+                #not digit
+                return False
+            #all digit
+            return True
+        # +1
+        elif len(token) > 1:
+            if token[1] in define_non_zero_digit:
+                return True
+            return False
+        elif len(token) == 1:
+            return True
 
 
+    #sign 없는 정수 1~9 & 0~9*
+    if token[0] in define_non_zero_digit:
+        if len(token) > 1:
+            #추가된 symbol을 확인한다. 1~9 & 0~9
+            if token[-1] not in define_digit:
+                    #not digit
+                return False
+            #all digit
+            return True
+        else:
+            #맨처음 판별 1~9
+            return True
+
+#boolean 인지 판별 (buffer와 next input symbol을 가지고 토큰 가능성여부를 반환함)
 def D_token_Boolean(bufer,next_symbol):
     token = ''.join(bufer) + next_symbol
-    print('D_token_Boolean',token)
+    #print('D_token_Boolean',token)
     for boolean in define_boolean:
         #boolean = false
         for i in range(len(boolean)):
@@ -123,10 +141,10 @@ def D_token_Boolean(bufer,next_symbol):
             if token == boolean[:i+1]:
                 return True
     return False
-
+#char 인지 판별 (buffer와 next input symbol을 가지고 토큰 가능성여부를 반환함)
 def D_token_Char(bufer,next_symbol):
     token = ''.join(bufer) + next_symbol
-    print('D_token_Char',token)
+    #print('D_token_Char',token)
     #token = '1
     if token[0] == "'":
         #1 char
@@ -184,10 +202,10 @@ def D_token_Char(bufer,next_symbol):
                 return False
     return False
 
-
+#string 인지 판별 (buffer와 next input symbol을 가지고 토큰 가능성여부를 반환함)
 def D_token_String(bufer,next_symbol):
     token = ''.join(bufer) + next_symbol
-    print('D_token_String',token)
+    #print('D_token_String',token)
     if token[0] == '"':
         #"123"1
         #"1
@@ -212,9 +230,10 @@ def D_token_String(bufer,next_symbol):
             return True
     return False
 
+#vtype 인지 판별 (buffer와 next input symbol을 가지고 토큰 가능성여부를 반환함)
 def D_token_Vtype(bufer,next_symbol):
     token = ''.join(bufer) + next_symbol
-    print('D_token_Vtype',token)
+    #print('D_token_Vtype',token)
     for vtype in define_vtype:
         #ex vtype = 'int' ...
         for i in range(len(vtype)):
@@ -222,9 +241,9 @@ def D_token_Vtype(bufer,next_symbol):
             if token == vtype[:i+1]:
                 return True
     return False
-
+#septerator 인지 판별 (buffer와 next input symbol을 가지고 토큰 가능성여부를 반환함)
 def D_token_Seperator(symbol):
-    print('D_token_Seperator',symbol)
+    #print('D_token_Seperator',symbol)
     #1 char
     if symbol == '(':
         tokens.append(('LPAREN','('))
@@ -246,9 +265,10 @@ def D_token_Seperator(symbol):
         tokens.append(('SEMI_COLON',';'))
 
 
+#tokens 리스트에 type string과 token을 넣는다
 def Append_Token_As_ExpectString(expect_string,bufer):
     token = ''.join(bufer)
-    print("Append_Token_As_ExpectString" , expect_string,token)
+    #print("Append_Token_As_ExpectString" , expect_string,token)
 
     if expect_string == 'vtype':
         tokens.append(('VTYPE',token))
@@ -266,10 +286,9 @@ def Append_Token_As_ExpectString(expect_string,bufer):
         tokens.append(('BOOLEAN',token))
     elif expect_string == 'str':
         tokens.append(('STRING',token))
-    print(tokens)
 
 
-#Discriminate token
+#첫번째를 제외한 다음 input symbol을 종합적을 판별하여 next_expect 리스트에 추가
 def Discriminate_token(expect,bufer,next_symbol):
     next_expect = []
     for expect_index in range(len(expect)):
@@ -305,20 +324,23 @@ def Discriminate_token(expect,bufer,next_symbol):
         expect_isvaild = [False] * len(expect) 
         for expect_index in range(len(expect)):
             if expect[expect_index] == 'vtype':
-                if bufer in define_vtype:
+                if ''.join(bufer) in define_vtype:
                     expect_isvaild[expect_index] = True
-
             elif expect[expect_index] == 'keyword':
-                if bufer in define_keyword:
+                if ''.join(bufer) in define_keyword:
                     expect_isvaild[expect_index] = True
             elif expect[expect_index] == 'id':
-                expect_isvaild[expect_index] = True
+                if ''.join(bufer) not in define_boolean + define_keyword:
+                    expect_isvaild[expect_index] = True
             #elif expect[expect_index] == 'seperator':
             elif expect[expect_index] == 'op':
-                if bufer in define_operator:
+                if ''.join(bufer) in define_operator:
                     expect_isvaild[expect_index] = True
             elif expect[expect_index] == 'int':
-                expect_isvaild[expect_index] = True
+                if bufer[0] in ['+','-'] and len(bufer) == 1:
+                    expect_isvaild[expect_index] = False
+                else: 
+                    expect_isvaild[expect_index] = True
             elif expect[expect_index] == 'char':
                 if bufer[0] == "'" and bufer[-1] == "'":
                     expect_isvaild[expect_index] = True
@@ -334,7 +356,7 @@ def Discriminate_token(expect,bufer,next_symbol):
                 expect_token = expect[i]
                 break
 
-        print('append token',expect_token,bufer)
+        #print('append token',expect_token,bufer)
         Append_Token_As_ExpectString(expect_token,bufer)
         bufer = []
     expect = next_expect
@@ -342,9 +364,9 @@ def Discriminate_token(expect,bufer,next_symbol):
     return bufer, expect
 
 
-#Discriminate first symbol
+#첫번째 심볼을 통해 필터링을 거친다
 def Discriminate_first_symbol(symbol):
-    print('Discriminate_fist_symbol',symbol)
+    #print('Discriminate_fist_symbol',symbol)
     expect = []
     bufer = []
     #priority
@@ -354,7 +376,7 @@ def Discriminate_first_symbol(symbol):
         expect.append('keyword')
     if symbol in define_identifier_first_symbol:
         expect.append('id')
-
+    #seperator 의 경우 길이 1의 토큰만 존재하므로 바로 추가한다
     if symbol in define_seperator_first_symbol:
         #seperator : 1 char, append token
         D_token_Seperator(symbol)
@@ -370,11 +392,11 @@ def Discriminate_first_symbol(symbol):
     if symbol in define_string_first_symbol:
         expect.append('str')
 
-    print('Discriminate_fist_symbol: expect : ',expect)
+    #print('Discriminate_fist_symbol: expect : ',expect)
 
     return bufer,expect
 
-
+#에러 출력
 def PrintError(token,errorcode):
     sindex = 0
     eindex = 0
@@ -390,7 +412,7 @@ def PrintError(token,errorcode):
     while(input_string[pindex] != '\n'):
         pindex += 1
     eindex =  pindex
-    print(input_string[sindex:eindex])
+    #print(input_string[sindex:eindex])
 
     if errorcode == 10:
         print("TypeError" , token , ": Charactor Type can has 1 charactor")
@@ -439,14 +461,16 @@ define_identifier_first_symbol = ['_'] + define_lower_case + define_upper_case
 define_keyword_first_symbol = set([token[0] for token in define_keyword])
 define_seperator_first_symbol = define_seperator
 define_operator_first_symbol = set([token[0] for token in define_operator])
-define_integer_first_symbol = define_digit
+define_integer_first_symbol = define_digit + ['+','-']
 define_boolean_first_symbol = ['t','f']
 define_char_first_symbol = ["'"]
 define_string_first_symbol = ['"']
 define_vtype_first_symbol = set([token[0] for token in define_vtype])
 
 
+
 input_file = open('input_string.txt','r')
+#last char $ 을 추가한다.
 input_string = input_file.read() + '\n$'
 tokens = []
 bufer = []
@@ -454,29 +478,35 @@ expect = []
 index = 0
 flag = 0
 
+
+#input string index를 증가시켜 last string $ 이 나올때까지 반복한다.
 while(input_string[index] != '$'):
     flag = 0
+    #next input symbol
     next_symbol = input_string[index]
-    print(bufer,next_symbol)
-    print('expect : ',expect)
+
+    #tokens에 append 하고 새로운 string을 판별할때
     if len(expect) == 0:
+        #첫번째 symbol 판별식
         bufer,expect = Discriminate_first_symbol(next_symbol)
         if len(expect) == 0:
             #not token
             flag = 2
+    #2번째 이상 symbol 판별
     else:
         bufer, expect = Discriminate_token(expect,bufer,next_symbol)
         if len(expect) == 0:
             flag = 1
 
+    #정상
     if flag == 0:
-        #nomal
         bufer.append(next_symbol)
         index += 1
+    #다음 symbol이 token이 아닐때
     elif flag == 2:
-        #not token next symbol
         index += 1
 
+#input 판별을 종료하고 버퍼에 남아있는 토큰을 추가한다
 if expect:
     Append_Token_As_ExpectString(expect[0],bufer)
 print(tokens)
