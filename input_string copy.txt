@@ -1,0 +1,46 @@
+int a = 0;
+vtype id assign literal semi
+
+int main(int x){
+    int a = 0;
+    return 0;
+}
+vtype id lparen vtype id rparen lbrace vtype id assign literal semi return literal semi rbrace
+
+
+int main(int x){
+    int a = 0;
+    a = x + 1;
+    return a;
+}
+vtype id lparen vtype id rparen lbrace vtype id assign literal semi id assign id addsub literal semi return id semi rbrace
+
+
+int main(int x, int y){
+    int temp = 0;
+    temp = x * y;
+    if (True == True){
+        temp = x + y;
+    }else{
+        temp = x * y;
+    }
+    return True;
+}
+vtype id lparen vtype id comma vtype id rparen lbrace vtype id assign literal semi id assign id multdiv id semi if lparen boolstr comp boolstr rparen lbrace id assign id addsub id semi rbrace return boolstr semi rbrace
+
+
+int main(int x, int y){
+    int temp = 0;
+    temp = x * y;
+    if (True == True){
+        temp = x + y;
+    }else{
+        temp = x * y;
+    }
+    return True;
+}
+vtype id lparen vtype id comma vtype id rparen lbrace vtype id assign literal semi id assign id multdiv id semi if lparen boolstr comp boolstr rparen lbrace id assign id addsub id semi rbrace else lbrace id assign id multdiv id semi rbrace return boolstr semi rbrace
+
+
+
+vtype id lparen vtype id rparen lbrace vtype id assign character semi vtype id assign id semi if lparen id comp id rparen lbrace return literal semi rbrace rbrace

@@ -1,3 +1,4 @@
+CODE' -> CODE
 CODE -> VDECL CODE
 CODE -> FDECL CODE
 CODE -> CDECL CODE
@@ -28,6 +29,7 @@ STMT -> ASSIGN semi
 STMT -> if lparen COND rparen lbrace BLOCK rbrace ELSE
 STMT -> while lparen COND rparen lbrace BLOCK rbrace ELSE
 COND -> CONDL comp COND
+COND -> CONDL
 CONDL -> boolstr
 ELSE -> else lbrace BLOCK rbrace
 ELSE -> ''

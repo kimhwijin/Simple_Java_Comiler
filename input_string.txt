@@ -1,1 +1,13 @@
-0010--10
+class compiler{
+    int x = 0;
+    int y = 0;
+    int multi(int x, int y){
+        if(True == False){
+            x = 0;
+            y = 0;
+        }
+        return x * y;
+    }
+}
+int i = 0;
+

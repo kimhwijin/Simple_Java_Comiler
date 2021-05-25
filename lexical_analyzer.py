@@ -468,7 +468,6 @@ define_string_first_symbol = ['"']
 define_vtype_first_symbol = set([token[0] for token in define_vtype])
 
 
-
 input_file = open('input_string.txt','r')
 #last char $ 을 추가한다.
 input_string = input_file.read() + '\n$'
@@ -477,8 +476,6 @@ bufer = []
 expect = []
 index = 0
 flag = 0
-
-
 #input string index를 증가시켜 last string $ 이 나올때까지 반복한다.
 while(input_string[index] != '$'):
     flag = 0
@@ -509,4 +506,6 @@ while(input_string[index] != '$'):
 #input 판별을 종료하고 버퍼에 남아있는 토큰을 추가한다
 if expect:
     Append_Token_As_ExpectString(expect[0],bufer)
-print(tokens)
+
+def lexical_analyzer_fn():
+    return tokens
