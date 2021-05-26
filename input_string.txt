@@ -2,7 +2,7 @@ class compiler{
     int x = 0;
     int y = 0;
     int multi(int x, int y){
-        if(True == False){
+        if(true == false){
             x = 0;
             y = 0;
         }
@@ -10,4 +10,3 @@ class compiler{
     }
 }
 int i = 0;
-

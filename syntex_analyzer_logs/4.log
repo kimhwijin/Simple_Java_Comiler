@@ -1,0 +1,133 @@
+vtype, id, lparen, vtype, id, rparen, lbrace, vtype, id, assign, num, semi, id, assign, id, addsub, num, semi, return, id, semi, rbrace, $
+---------------steps :100---------------
+stack : 0
+tokens : [('id', 'main'), ('lparen', '('), ('vtype', 'int'), ('id', 'x'), ('rparen', ')'), ('lbrace', '{'), ('vtype', 'int'), ('id', 'a'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'a'), ('assign', '='), ('id', 'x'), ('addsub', '+'), ('num', '1'), ('semi', ';'), ('return', 'return'), ('id', 'a'), ('semi', ';'), ('rbrace', '}')]
+## state :0| token :vtype| action :s5
+---------------steps :99---------------
+stack : 0, 'vtype', 5
+tokens : [('lparen', '('), ('vtype', 'int'), ('id', 'x'), ('rparen', ')'), ('lbrace', '{'), ('vtype', 'int'), ('id', 'a'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'a'), ('assign', '='), ('id', 'x'), ('addsub', '+'), ('num', '1'), ('semi', ';'), ('return', 'return'), ('id', 'a'), ('semi', ';'), ('rbrace', '}')]
+## state :5| token :id| action :s10
+---------------steps :98---------------
+stack : 0, 'vtype', 5, 'id', 10
+tokens : [('vtype', 'int'), ('id', 'x'), ('rparen', ')'), ('lbrace', '{'), ('vtype', 'int'), ('id', 'a'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'a'), ('assign', '='), ('id', 'x'), ('addsub', '+'), ('num', '1'), ('semi', ';'), ('return', 'return'), ('id', 'a'), ('semi', ';'), ('rbrace', '}')]
+## state :10| token :lparen| action :s14
+---------------steps :97---------------
+stack : 0, 'vtype', 5, 'id', 10, 'lparen', 14
+tokens : [('id', 'x'), ('rparen', ')'), ('lbrace', '{'), ('vtype', 'int'), ('id', 'a'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'a'), ('assign', '='), ('id', 'x'), ('addsub', '+'), ('num', '1'), ('semi', ';'), ('return', 'return'), ('id', 'a'), ('semi', ';'), ('rbrace', '}')]
+## state :14| token :vtype| action :s19
+---------------steps :96---------------
+stack : 0, 'vtype', 5, 'id', 10, 'lparen', 14, 'vtype', 19
+tokens : [('rparen', ')'), ('lbrace', '{'), ('vtype', 'int'), ('id', 'a'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'a'), ('assign', '='), ('id', 'x'), ('addsub', '+'), ('num', '1'), ('semi', ';'), ('return', 'return'), ('id', 'a'), ('semi', ';'), ('rbrace', '}')]
+## state :19| token :id| action :s34
+---------------steps :95---------------
+stack : 0, 'vtype', 5, 'id', 10, 'lparen', 14, 'vtype', 19, 'id', 34
+tokens : [('lbrace', '{'), ('vtype', 'int'), ('id', 'a'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'a'), ('assign', '='), ('id', 'x'), ('addsub', '+'), ('num', '1'), ('semi', ';'), ('return', 'return'), ('id', 'a'), ('semi', ';'), ('rbrace', '}')]
+## state :34| token :rparen| action :r23
+---------------steps :94---------------
+stack : 0, 'vtype', 5, 'id', 10, 'lparen', 14, 'vtype', 19, 'id', 34, 'MOREARGS'
+tokens : [('lbrace', '{'), ('vtype', 'int'), ('id', 'a'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'a'), ('assign', '='), ('id', 'x'), ('addsub', '+'), ('num', '1'), ('semi', ';'), ('return', 'return'), ('id', 'a'), ('semi', ';'), ('rbrace', '}')]
+## state :34| token :MOREARGS| action :42
+---------------steps :93---------------
+stack : 0, 'vtype', 5, 'id', 10, 'lparen', 14, 'vtype', 19, 'id', 34, 'MOREARGS', 42
+tokens : [('lbrace', '{'), ('vtype', 'int'), ('id', 'a'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'a'), ('assign', '='), ('id', 'x'), ('addsub', '+'), ('num', '1'), ('semi', ';'), ('return', 'return'), ('id', 'a'), ('semi', ';'), ('rbrace', '}')]
+## state :42| token :rparen| action :r20
+---------------steps :92---------------
+stack : 0, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG'
+tokens : [('lbrace', '{'), ('vtype', 'int'), ('id', 'a'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'a'), ('assign', '='), ('id', 'x'), ('addsub', '+'), ('num', '1'), ('semi', ';'), ('return', 'return'), ('id', 'a'), ('semi', ';'), ('rbrace', '}')]
+## state :14| token :ARG| action :18
+---------------steps :91---------------
+stack : 0, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18
+tokens : [('lbrace', '{'), ('vtype', 'int'), ('id', 'a'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'a'), ('assign', '='), ('id', 'x'), ('addsub', '+'), ('num', '1'), ('semi', ';'), ('return', 'return'), ('id', 'a'), ('semi', ';'), ('rbrace', '}')]
+## state :18| token :rparen| action :s33
+---------------steps :90---------------
+stack : 0, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33
+tokens : [('vtype', 'int'), ('id', 'a'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'a'), ('assign', '='), ('id', 'x'), ('addsub', '+'), ('num', '1'), ('semi', ';'), ('return', 'return'), ('id', 'a'), ('semi', ';'), ('rbrace', '}')]
+## state :33| token :lbrace| action :s41
+---------------steps :89---------------
+stack : 0, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41
+tokens : [('id', 'a'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'a'), ('assign', '='), ('id', 'x'), ('addsub', '+'), ('num', '1'), ('semi', ';'), ('return', 'return'), ('id', 'a'), ('semi', ';'), ('rbrace', '}')]
+## state :41| token :vtype| action :s53
+---------------steps :88---------------
+stack : 0, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'vtype', 53
+tokens : [('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'a'), ('assign', '='), ('id', 'x'), ('addsub', '+'), ('num', '1'), ('semi', ';'), ('return', 'return'), ('id', 'a'), ('semi', ';'), ('rbrace', '}')]
+## state :53| token :id| action :s62
+---------------steps :87---------------
+stack : 0, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'vtype', 53, 'id', 62
+tokens : [('num', '0'), ('semi', ';'), ('id', 'a'), ('assign', '='), ('id', 'x'), ('addsub', '+'), ('num', '1'), ('semi', ';'), ('return', 'return'), ('id', 'a'), ('semi', ';'), ('rbrace', '}')]
+## state :62| token :assign| action :s15
+---------------steps :86---------------
+stack : 0, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'vtype', 53, 'id', 62, 'assign', 15
+tokens : [('semi', ';'), ('id', 'a'), ('assign', '='), ('id', 'x'), ('addsub', '+'), ('num', '1'), ('semi', ';'), ('return', 'return'), ('id', 'a'), ('semi', ';'), ('rbrace', '}')]
+## state :15| token :num| action :s29
+---------------steps :85---------------
+stack : 0, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'vtype', 53, 'id', 62, 'assign', 15, 'num', 29
+tokens : [('id', 'a'), ('assign', '='), ('id', 'x'), ('addsub', '+'), ('num', '1'), ('semi', ';'), ('return', 'return'), ('id', 'a'), ('semi', ';'), ('rbrace', '}')]
+## state :29| token :semi| action :r18
+---------------steps :84---------------
+stack : 0, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'vtype', 53, 'id', 62, 'assign', 15, 'EXPRF'
+tokens : [('id', 'a'), ('assign', '='), ('id', 'x'), ('addsub', '+'), ('num', '1'), ('semi', ';'), ('return', 'return'), ('id', 'a'), ('semi', ';'), ('rbrace', '}')]
+## state :15| token :EXPRF| action :26
+---------------steps :83---------------
+stack : 0, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'vtype', 53, 'id', 62, 'assign', 15, 'EXPRF', 26
+tokens : [('id', 'a'), ('assign', '='), ('id', 'x'), ('addsub', '+'), ('num', '1'), ('semi', ';'), ('return', 'return'), ('id', 'a'), ('semi', ';'), ('rbrace', '}')]
+## state :26| token :semi| action :r15
+---------------steps :82---------------
+stack : 0, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'vtype', 53, 'id', 62, 'assign', 15, 'EXPRT'
+tokens : [('id', 'a'), ('assign', '='), ('id', 'x'), ('addsub', '+'), ('num', '1'), ('semi', ';'), ('return', 'return'), ('id', 'a'), ('semi', ';'), ('rbrace', '}')]
+## state :15| token :EXPRT| action :25
+---------------steps :81---------------
+stack : 0, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'vtype', 53, 'id', 62, 'assign', 15, 'EXPRT', 25
+tokens : [('id', 'a'), ('assign', '='), ('id', 'x'), ('addsub', '+'), ('num', '1'), ('semi', ';'), ('return', 'return'), ('id', 'a'), ('semi', ';'), ('rbrace', '}')]
+## state :25| token :semi| action :r13
+---------------steps :80---------------
+stack : 0, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'vtype', 53, 'id', 62, 'assign', 15, 'EXPR'
+tokens : [('id', 'a'), ('assign', '='), ('id', 'x'), ('addsub', '+'), ('num', '1'), ('semi', ';'), ('return', 'return'), ('id', 'a'), ('semi', ';'), ('rbrace', '}')]
+## state :15| token :EXPR| action :21
+---------------steps :79---------------
+stack : 0, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'vtype', 53, 'id', 62, 'assign', 15, 'EXPR', 21
+tokens : [('id', 'a'), ('assign', '='), ('id', 'x'), ('addsub', '+'), ('num', '1'), ('semi', ';'), ('return', 'return'), ('id', 'a'), ('semi', ';'), ('rbrace', '}')]
+## state :21| token :semi| action :r8
+---------------steps :78---------------
+stack : 0, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'vtype', 53, 'id', 62, 'assign', 15, 'RHS'
+tokens : [('id', 'a'), ('assign', '='), ('id', 'x'), ('addsub', '+'), ('num', '1'), ('semi', ';'), ('return', 'return'), ('id', 'a'), ('semi', ';'), ('rbrace', '}')]
+## state :15| token :RHS| action :20
+---------------steps :77---------------
+stack : 0, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'vtype', 53, 'id', 62, 'assign', 15, 'RHS', 20
+tokens : [('id', 'a'), ('assign', '='), ('id', 'x'), ('addsub', '+'), ('num', '1'), ('semi', ';'), ('return', 'return'), ('id', 'a'), ('semi', ';'), ('rbrace', '}')]
+## state :20| token :semi| action :r7
+---------------steps :76---------------
+stack : 0, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'vtype', 53, 'ASSIGN'
+tokens : [('id', 'a'), ('assign', '='), ('id', 'x'), ('addsub', '+'), ('num', '1'), ('semi', ';'), ('return', 'return'), ('id', 'a'), ('semi', ';'), ('rbrace', '}')]
+## state :53| token :ASSIGN| action :11
+---------------steps :75---------------
+stack : 0, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'vtype', 53, 'ASSIGN', 11
+tokens : [('id', 'a'), ('assign', '='), ('id', 'x'), ('addsub', '+'), ('num', '1'), ('semi', ';'), ('return', 'return'), ('id', 'a'), ('semi', ';'), ('rbrace', '}')]
+## state :11| token :semi| action :s16
+---------------steps :74---------------
+stack : 0, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'vtype', 53, 'ASSIGN', 11, 'semi', 16
+tokens : [('assign', '='), ('id', 'x'), ('addsub', '+'), ('num', '1'), ('semi', ';'), ('return', 'return'), ('id', 'a'), ('semi', ';'), ('rbrace', '}')]
+## state :16| token :id| action :r6
+---------------steps :73---------------
+stack : 0, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'VDECL'
+tokens : [('assign', '='), ('id', 'x'), ('addsub', '+'), ('num', '1'), ('semi', ';'), ('return', 'return'), ('id', 'a'), ('semi', ';'), ('rbrace', '}')]
+## state :41| token :VDECL| action :49
+---------------steps :72---------------
+stack : 0, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'VDECL', 49
+tokens : [('assign', '='), ('id', 'x'), ('addsub', '+'), ('num', '1'), ('semi', ';'), ('return', 'return'), ('id', 'a'), ('semi', ';'), ('rbrace', '}')]
+## state :49| token :id| action :r26
+---------------steps :71---------------
+stack : 0, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'STMT'
+tokens : [('assign', '='), ('id', 'x'), ('addsub', '+'), ('num', '1'), ('semi', ';'), ('return', 'return'), ('id', 'a'), ('semi', ';'), ('rbrace', '}')]
+## state :41| token :STMT| action :48
+---------------steps :70---------------
+stack : 0, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'STMT', 48
+tokens : [('assign', '='), ('id', 'x'), ('addsub', '+'), ('num', '1'), ('semi', ';'), ('return', 'return'), ('id', 'a'), ('semi', ';'), ('rbrace', '}')]
+## state :48| token :id| action :s54
+---------------steps :69---------------
+stack : 0, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'STMT', 48, 'id', 54
+tokens : [('id', 'x'), ('addsub', '+'), ('num', '1'), ('semi', ';'), ('return', 'return'), ('id', 'a'), ('semi', ';'), ('rbrace', '}')]
+## state :54| token :assign| action :s15
+---------------steps :68---------------
+stack : 0, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'STMT', 48, 'id', 54, 'assign', 15
+tokens : [('addsub', '+'), ('num', '1'), ('semi', ';'), ('return', 'return'), ('id', 'a'), ('semi', ';'), ('rbrace', '}')]
+## state :15| token :id| action :None

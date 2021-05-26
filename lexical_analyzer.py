@@ -1,22 +1,22 @@
 def get_seperator_token_name(cur_char):
     if cur_char == '(':
-        return 'LEFT_PAREN'
+        return 'lparen'
     elif cur_char == ')':
-        return 'RIGHT_PAREN'
+        return 'rparen'
     elif cur_char == '{':
-        return 'LEFT_BRACE'
+        return 'lbrace'
     elif cur_char == '}':
-        return 'RIGHT_BRACE'
+        return 'rbrace'
     elif cur_char == '[':
-        return 'LEFT_BRACKET'
+        return 'lbracket'
     elif cur_char == ']':
-        return 'RIGHT_BRACKET'
+        return 'rbracket'
     elif cur_char == ',':
-        return 'COMMA'
+        return 'comma'
     elif cur_char == '.':
-        return 'PERIOD'
+        return 'period'
     elif cur_char == ';':
-        return 'SEMI_COLON'
+        return 'semi'
 
 #id 의 start symbol 확인
 def D_id_start(char_token):
@@ -246,23 +246,23 @@ def D_token_Seperator(symbol):
     #print('D_token_Seperator',symbol)
     #1 char
     if symbol == '(':
-        tokens.append(('LPAREN','('))
+        tokens.append(('lparen','('))
     elif symbol == ')':
-        tokens.append(('RPAREN',')'))
+        tokens.append(('rparen',')'))
     elif symbol == '{':
-        tokens.append(('LBRACE','{'))
+        tokens.append(('lbrace','{'))
     elif symbol == '}':
-        tokens.append(('RBRACE','}'))
+        tokens.append(('rbrace','}'))
     elif symbol == '[':
-        tokens.append(('LBRACKET','['))
+        tokens.append(('lbracket','['))
     elif symbol == ']':
-        tokens.append(('RBRACKET',']'))
+        tokens.append(('rbracket',']'))
     elif symbol == ',':
-        tokens.append(('COMMA',','))
+        tokens.append(('comma',','))
     elif symbol == '.':
-        tokens.append(('PERIOD','.'))
+        tokens.append(('period','.'))
     elif symbol == ';':
-        tokens.append(('SEMI_COLON',';'))
+        tokens.append(('semi',';'))
 
 
 #tokens 리스트에 type string과 token을 넣는다
@@ -271,21 +271,21 @@ def Append_Token_As_ExpectString(expect_string,bufer):
     #print("Append_Token_As_ExpectString" , expect_string,token)
 
     if expect_string == 'vtype':
-        tokens.append(('VTYPE',token))
+        tokens.append(('vtype',token))
     elif expect_string == 'keyword':
         tokens.append(('KEYWORD',token))
     elif expect_string == 'id':
-        tokens.append(('IDENTIFIER',token))
+        tokens.append(('id',token))
     elif expect_string == 'op':
         tokens.append(('OPERATOR',token))
     elif expect_string == 'int':
-        tokens.append(('INTIGER',token))
+        tokens.append(('num',token))
     elif expect_string == 'char':
-        tokens.append(('CHARACTOR',token))
+        tokens.append(('charactor',token))
     elif expect_string == 'bool':
-        tokens.append(('BOOLEAN',token))
+        tokens.append(('boolstr',token))
     elif expect_string == 'str':
-        tokens.append(('STRING',token))
+        tokens.append(('literal',token))
 
 
 #첫번째를 제외한 다음 input symbol을 종합적을 판별하여 next_expect 리스트에 추가
@@ -370,6 +370,8 @@ def Discriminate_first_symbol(symbol):
     expect = []
     bufer = []
     #priority
+    if symbol in define_boolean_first_symbol:
+        expect.append('bool')
     if symbol in define_vtype_first_symbol:
         expect.append('vtype')
     if symbol in define_keyword_first_symbol:
@@ -385,8 +387,6 @@ def Discriminate_first_symbol(symbol):
         expect.append('op')
     if symbol in define_integer_first_symbol:
         expect.append('int')
-    if symbol in define_boolean_first_symbol:
-        expect.append('bool')
     if symbol in define_char_first_symbol:
         expect.append('char')
     if symbol in define_string_first_symbol:
@@ -508,4 +508,20 @@ if expect:
     Append_Token_As_ExpectString(expect[0],bufer)
 
 def lexical_analyzer_fn():
+    for idx in range(len(tokens)):
+        token , name = tokens[idx]
+        if token == 'KEYWORD':
+            tokens[idx] = (name, name)
+        elif token == 'OPERATOR':
+            if name == '=':
+                tokens[idx] = ('assign', '=')
+            elif name == '+' or name == '-':
+                tokens[idx] = ('addsub', name)
+            elif name == '*' or name == '/':
+                tokens[idx] = ('multdiv', name)
+            elif name in define_comparison:
+                tokens[idx] = ('comp', name)
+    tokens.append(('$','endstr'))
     return tokens
+
+print(tokens)

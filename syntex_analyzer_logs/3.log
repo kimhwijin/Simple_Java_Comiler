@@ -1,0 +1,90 @@
+vtype, id, assign, num, semi, $
+---------------steps :55---------------
+stack : 0
+tokens : [('id', 'a'), ('assign', '='), ('num', '0'), ('semi', ';')]
+## state :0| token :vtype| action :s5
+---------------steps :54---------------
+stack : 0, 'vtype', 5
+tokens : [('assign', '='), ('num', '0'), ('semi', ';')]
+## state :5| token :id| action :s10
+---------------steps :53---------------
+stack : 0, 'vtype', 5, 'id', 10
+tokens : [('num', '0'), ('semi', ';')]
+## state :10| token :assign| action :s15
+---------------steps :52---------------
+stack : 0, 'vtype', 5, 'id', 10, 'assign', 15
+tokens : [('semi', ';')]
+## state :15| token :num| action :s29
+---------------steps :51---------------
+stack : 0, 'vtype', 5, 'id', 10, 'assign', 15, 'num', 29
+tokens : []
+## state :29| token :semi| action :r18
+---------------steps :50---------------
+stack : 0, 'vtype', 5, 'id', 10, 'assign', 15, 'EXPRF'
+tokens : []
+## state :15| token :EXPRF| action :26
+---------------steps :49---------------
+stack : 0, 'vtype', 5, 'id', 10, 'assign', 15, 'EXPRF', 26
+tokens : []
+## state :26| token :semi| action :r15
+---------------steps :48---------------
+stack : 0, 'vtype', 5, 'id', 10, 'assign', 15, 'EXPRT'
+tokens : []
+## state :15| token :EXPRT| action :25
+---------------steps :47---------------
+stack : 0, 'vtype', 5, 'id', 10, 'assign', 15, 'EXPRT', 25
+tokens : []
+## state :25| token :semi| action :r13
+---------------steps :46---------------
+stack : 0, 'vtype', 5, 'id', 10, 'assign', 15, 'EXPR'
+tokens : []
+## state :15| token :EXPR| action :21
+---------------steps :45---------------
+stack : 0, 'vtype', 5, 'id', 10, 'assign', 15, 'EXPR', 21
+tokens : []
+## state :21| token :semi| action :r8
+---------------steps :44---------------
+stack : 0, 'vtype', 5, 'id', 10, 'assign', 15, 'RHS'
+tokens : []
+## state :15| token :RHS| action :20
+---------------steps :43---------------
+stack : 0, 'vtype', 5, 'id', 10, 'assign', 15, 'RHS', 20
+tokens : []
+## state :20| token :semi| action :r7
+---------------steps :42---------------
+stack : 0, 'vtype', 5, 'ASSIGN'
+tokens : []
+## state :5| token :ASSIGN| action :11
+---------------steps :41---------------
+stack : 0, 'vtype', 5, 'ASSIGN', 11
+tokens : []
+## state :11| token :semi| action :s16
+---------------steps :40---------------
+stack : 0, 'vtype', 5, 'ASSIGN', 11, 'semi', 16
+tokens : []
+## state :16| token :$| action :r6
+---------------steps :39---------------
+stack : 0, 'VDECL'
+tokens : []
+## state :0| token :VDECL| action :2
+---------------steps :38---------------
+stack : 0, 'VDECL', 2
+tokens : []
+## state :2| token :$| action :r4
+---------------steps :37---------------
+stack : 0, 'VDECL', 2, 'CODE'
+tokens : []
+## state :2| token :CODE| action :7
+---------------steps :36---------------
+stack : 0, 'VDECL', 2, 'CODE', 7
+tokens : []
+## state :7| token :$| action :r1
+---------------steps :35---------------
+stack : 0, 'CODE'
+tokens : []
+## state :0| token :CODE| action :1
+---------------steps :34---------------
+stack : 0, 'CODE', 1
+tokens : []
+## state :1| token :$| action :acc
+----------------accept!----------------
