@@ -1,3 +1,19 @@
+int a = 0;
+int main(int x){
+    int a = 0;
+    a = x + 1;
+    return a;
+}
+int main123(int x, int y){
+    int temp = 0;
+    temp = x * y;
+    if (true == true){
+        temp = x + y;
+    }else{
+        temp = x * y;
+    }
+    return true;
+}
 class compiler{
     int x = 0;
     int y = 0;
@@ -9,4 +25,3 @@ class compiler{
         return x * y;
     }
 }
-int i = 0;

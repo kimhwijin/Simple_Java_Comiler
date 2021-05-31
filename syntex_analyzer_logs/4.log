@@ -1,133 +1,614 @@
-vtype, id, lparen, vtype, id, rparen, lbrace, vtype, id, assign, num, semi, id, assign, id, addsub, num, semi, return, id, semi, rbrace, $
----------------steps :100---------------
+class id lbrace vtype id assign num semi vtype id assign num semi vtype id lparen vtype id comma vtype id rparen lbrace if lparen boolstr comp boolstr rparen lbrace id assign num semi id assign num semi rbrace return id multdiv id semi rbrace rbrace $
+---------------steps :0---------------
 stack : 0
-tokens : [('id', 'main'), ('lparen', '('), ('vtype', 'int'), ('id', 'x'), ('rparen', ')'), ('lbrace', '{'), ('vtype', 'int'), ('id', 'a'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'a'), ('assign', '='), ('id', 'x'), ('addsub', '+'), ('num', '1'), ('semi', ';'), ('return', 'return'), ('id', 'a'), ('semi', ';'), ('rbrace', '}')]
-## state :0| token :vtype| action :s5
----------------steps :99---------------
-stack : 0, 'vtype', 5
-tokens : [('lparen', '('), ('vtype', 'int'), ('id', 'x'), ('rparen', ')'), ('lbrace', '{'), ('vtype', 'int'), ('id', 'a'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'a'), ('assign', '='), ('id', 'x'), ('addsub', '+'), ('num', '1'), ('semi', ';'), ('return', 'return'), ('id', 'a'), ('semi', ';'), ('rbrace', '}')]
+tokens : [('id', 'compiler'), ('lbrace', '{'), ('vtype', 'int'), ('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('vtype', 'int'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('vtype', 'int'), ('id', 'multi'), ('lparen', '('), ('vtype', 'int'), ('id', 'x'), ('comma', ','), ('vtype', 'int'), ('id', 'y'), ('rparen', ')'), ('lbrace', '{'), ('if', 'if'), ('lparen', '('), ('boolstr', 'true'), ('comp', '=='), ('boolstr', 'false'), ('rparen', ')'), ('lbrace', '{'), ('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :0| token :class| action :s6
+---------------steps :1---------------
+stack : 0, 'class', 6
+tokens : [('lbrace', '{'), ('vtype', 'int'), ('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('vtype', 'int'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('vtype', 'int'), ('id', 'multi'), ('lparen', '('), ('vtype', 'int'), ('id', 'x'), ('comma', ','), ('vtype', 'int'), ('id', 'y'), ('rparen', ')'), ('lbrace', '{'), ('if', 'if'), ('lparen', '('), ('boolstr', 'true'), ('comp', '=='), ('boolstr', 'false'), ('rparen', ')'), ('lbrace', '{'), ('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :6| token :id| action :s12
+---------------steps :2---------------
+stack : 0, 'class', 6, 'id', 12
+tokens : [('vtype', 'int'), ('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('vtype', 'int'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('vtype', 'int'), ('id', 'multi'), ('lparen', '('), ('vtype', 'int'), ('id', 'x'), ('comma', ','), ('vtype', 'int'), ('id', 'y'), ('rparen', ')'), ('lbrace', '{'), ('if', 'if'), ('lparen', '('), ('boolstr', 'true'), ('comp', '=='), ('boolstr', 'false'), ('rparen', ')'), ('lbrace', '{'), ('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :12| token :lbrace| action :s17
+---------------steps :3---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17
+tokens : [('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('vtype', 'int'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('vtype', 'int'), ('id', 'multi'), ('lparen', '('), ('vtype', 'int'), ('id', 'x'), ('comma', ','), ('vtype', 'int'), ('id', 'y'), ('rparen', ')'), ('lbrace', '{'), ('if', 'if'), ('lparen', '('), ('boolstr', 'true'), ('comp', '=='), ('boolstr', 'false'), ('rparen', ')'), ('lbrace', '{'), ('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :17| token :vtype| action :s5
+---------------steps :4---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'vtype', 5
+tokens : [('assign', '='), ('num', '0'), ('semi', ';'), ('vtype', 'int'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('vtype', 'int'), ('id', 'multi'), ('lparen', '('), ('vtype', 'int'), ('id', 'x'), ('comma', ','), ('vtype', 'int'), ('id', 'y'), ('rparen', ')'), ('lbrace', '{'), ('if', 'if'), ('lparen', '('), ('boolstr', 'true'), ('comp', '=='), ('boolstr', 'false'), ('rparen', ')'), ('lbrace', '{'), ('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
 ## state :5| token :id| action :s10
----------------steps :98---------------
-stack : 0, 'vtype', 5, 'id', 10
-tokens : [('vtype', 'int'), ('id', 'x'), ('rparen', ')'), ('lbrace', '{'), ('vtype', 'int'), ('id', 'a'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'a'), ('assign', '='), ('id', 'x'), ('addsub', '+'), ('num', '1'), ('semi', ';'), ('return', 'return'), ('id', 'a'), ('semi', ';'), ('rbrace', '}')]
-## state :10| token :lparen| action :s14
----------------steps :97---------------
-stack : 0, 'vtype', 5, 'id', 10, 'lparen', 14
-tokens : [('id', 'x'), ('rparen', ')'), ('lbrace', '{'), ('vtype', 'int'), ('id', 'a'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'a'), ('assign', '='), ('id', 'x'), ('addsub', '+'), ('num', '1'), ('semi', ';'), ('return', 'return'), ('id', 'a'), ('semi', ';'), ('rbrace', '}')]
-## state :14| token :vtype| action :s19
----------------steps :96---------------
-stack : 0, 'vtype', 5, 'id', 10, 'lparen', 14, 'vtype', 19
-tokens : [('rparen', ')'), ('lbrace', '{'), ('vtype', 'int'), ('id', 'a'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'a'), ('assign', '='), ('id', 'x'), ('addsub', '+'), ('num', '1'), ('semi', ';'), ('return', 'return'), ('id', 'a'), ('semi', ';'), ('rbrace', '}')]
-## state :19| token :id| action :s34
----------------steps :95---------------
-stack : 0, 'vtype', 5, 'id', 10, 'lparen', 14, 'vtype', 19, 'id', 34
-tokens : [('lbrace', '{'), ('vtype', 'int'), ('id', 'a'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'a'), ('assign', '='), ('id', 'x'), ('addsub', '+'), ('num', '1'), ('semi', ';'), ('return', 'return'), ('id', 'a'), ('semi', ';'), ('rbrace', '}')]
-## state :34| token :rparen| action :r23
----------------steps :94---------------
-stack : 0, 'vtype', 5, 'id', 10, 'lparen', 14, 'vtype', 19, 'id', 34, 'MOREARGS'
-tokens : [('lbrace', '{'), ('vtype', 'int'), ('id', 'a'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'a'), ('assign', '='), ('id', 'x'), ('addsub', '+'), ('num', '1'), ('semi', ';'), ('return', 'return'), ('id', 'a'), ('semi', ';'), ('rbrace', '}')]
-## state :34| token :MOREARGS| action :42
----------------steps :93---------------
-stack : 0, 'vtype', 5, 'id', 10, 'lparen', 14, 'vtype', 19, 'id', 34, 'MOREARGS', 42
-tokens : [('lbrace', '{'), ('vtype', 'int'), ('id', 'a'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'a'), ('assign', '='), ('id', 'x'), ('addsub', '+'), ('num', '1'), ('semi', ';'), ('return', 'return'), ('id', 'a'), ('semi', ';'), ('rbrace', '}')]
-## state :42| token :rparen| action :r20
----------------steps :92---------------
-stack : 0, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG'
-tokens : [('lbrace', '{'), ('vtype', 'int'), ('id', 'a'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'a'), ('assign', '='), ('id', 'x'), ('addsub', '+'), ('num', '1'), ('semi', ';'), ('return', 'return'), ('id', 'a'), ('semi', ';'), ('rbrace', '}')]
-## state :14| token :ARG| action :18
----------------steps :91---------------
-stack : 0, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18
-tokens : [('lbrace', '{'), ('vtype', 'int'), ('id', 'a'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'a'), ('assign', '='), ('id', 'x'), ('addsub', '+'), ('num', '1'), ('semi', ';'), ('return', 'return'), ('id', 'a'), ('semi', ';'), ('rbrace', '}')]
-## state :18| token :rparen| action :s33
----------------steps :90---------------
-stack : 0, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33
-tokens : [('vtype', 'int'), ('id', 'a'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'a'), ('assign', '='), ('id', 'x'), ('addsub', '+'), ('num', '1'), ('semi', ';'), ('return', 'return'), ('id', 'a'), ('semi', ';'), ('rbrace', '}')]
-## state :33| token :lbrace| action :s41
----------------steps :89---------------
-stack : 0, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41
-tokens : [('id', 'a'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'a'), ('assign', '='), ('id', 'x'), ('addsub', '+'), ('num', '1'), ('semi', ';'), ('return', 'return'), ('id', 'a'), ('semi', ';'), ('rbrace', '}')]
-## state :41| token :vtype| action :s53
----------------steps :88---------------
-stack : 0, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'vtype', 53
-tokens : [('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'a'), ('assign', '='), ('id', 'x'), ('addsub', '+'), ('num', '1'), ('semi', ';'), ('return', 'return'), ('id', 'a'), ('semi', ';'), ('rbrace', '}')]
-## state :53| token :id| action :s62
----------------steps :87---------------
-stack : 0, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'vtype', 53, 'id', 62
-tokens : [('num', '0'), ('semi', ';'), ('id', 'a'), ('assign', '='), ('id', 'x'), ('addsub', '+'), ('num', '1'), ('semi', ';'), ('return', 'return'), ('id', 'a'), ('semi', ';'), ('rbrace', '}')]
-## state :62| token :assign| action :s15
----------------steps :86---------------
-stack : 0, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'vtype', 53, 'id', 62, 'assign', 15
-tokens : [('semi', ';'), ('id', 'a'), ('assign', '='), ('id', 'x'), ('addsub', '+'), ('num', '1'), ('semi', ';'), ('return', 'return'), ('id', 'a'), ('semi', ';'), ('rbrace', '}')]
+---------------steps :5---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'vtype', 5, 'id', 10
+tokens : [('num', '0'), ('semi', ';'), ('vtype', 'int'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('vtype', 'int'), ('id', 'multi'), ('lparen', '('), ('vtype', 'int'), ('id', 'x'), ('comma', ','), ('vtype', 'int'), ('id', 'y'), ('rparen', ')'), ('lbrace', '{'), ('if', 'if'), ('lparen', '('), ('boolstr', 'true'), ('comp', '=='), ('boolstr', 'false'), ('rparen', ')'), ('lbrace', '{'), ('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :10| token :assign| action :s15
+---------------steps :6---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'vtype', 5, 'id', 10, 'assign', 15
+tokens : [('semi', ';'), ('vtype', 'int'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('vtype', 'int'), ('id', 'multi'), ('lparen', '('), ('vtype', 'int'), ('id', 'x'), ('comma', ','), ('vtype', 'int'), ('id', 'y'), ('rparen', ')'), ('lbrace', '{'), ('if', 'if'), ('lparen', '('), ('boolstr', 'true'), ('comp', '=='), ('boolstr', 'false'), ('rparen', ')'), ('lbrace', '{'), ('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
 ## state :15| token :num| action :s29
----------------steps :85---------------
-stack : 0, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'vtype', 53, 'id', 62, 'assign', 15, 'num', 29
-tokens : [('id', 'a'), ('assign', '='), ('id', 'x'), ('addsub', '+'), ('num', '1'), ('semi', ';'), ('return', 'return'), ('id', 'a'), ('semi', ';'), ('rbrace', '}')]
+---------------steps :7---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'vtype', 5, 'id', 10, 'assign', 15, 'num', 29
+tokens : [('vtype', 'int'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('vtype', 'int'), ('id', 'multi'), ('lparen', '('), ('vtype', 'int'), ('id', 'x'), ('comma', ','), ('vtype', 'int'), ('id', 'y'), ('rparen', ')'), ('lbrace', '{'), ('if', 'if'), ('lparen', '('), ('boolstr', 'true'), ('comp', '=='), ('boolstr', 'false'), ('rparen', ')'), ('lbrace', '{'), ('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
 ## state :29| token :semi| action :r18
----------------steps :84---------------
-stack : 0, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'vtype', 53, 'id', 62, 'assign', 15, 'EXPRF'
-tokens : [('id', 'a'), ('assign', '='), ('id', 'x'), ('addsub', '+'), ('num', '1'), ('semi', ';'), ('return', 'return'), ('id', 'a'), ('semi', ';'), ('rbrace', '}')]
+---------------steps :8---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'vtype', 5, 'id', 10, 'assign', 15, 'EXPRF'
+tokens : [('vtype', 'int'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('vtype', 'int'), ('id', 'multi'), ('lparen', '('), ('vtype', 'int'), ('id', 'x'), ('comma', ','), ('vtype', 'int'), ('id', 'y'), ('rparen', ')'), ('lbrace', '{'), ('if', 'if'), ('lparen', '('), ('boolstr', 'true'), ('comp', '=='), ('boolstr', 'false'), ('rparen', ')'), ('lbrace', '{'), ('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
 ## state :15| token :EXPRF| action :26
----------------steps :83---------------
-stack : 0, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'vtype', 53, 'id', 62, 'assign', 15, 'EXPRF', 26
-tokens : [('id', 'a'), ('assign', '='), ('id', 'x'), ('addsub', '+'), ('num', '1'), ('semi', ';'), ('return', 'return'), ('id', 'a'), ('semi', ';'), ('rbrace', '}')]
+---------------steps :9---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'vtype', 5, 'id', 10, 'assign', 15, 'EXPRF', 26
+tokens : [('vtype', 'int'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('vtype', 'int'), ('id', 'multi'), ('lparen', '('), ('vtype', 'int'), ('id', 'x'), ('comma', ','), ('vtype', 'int'), ('id', 'y'), ('rparen', ')'), ('lbrace', '{'), ('if', 'if'), ('lparen', '('), ('boolstr', 'true'), ('comp', '=='), ('boolstr', 'false'), ('rparen', ')'), ('lbrace', '{'), ('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
 ## state :26| token :semi| action :r15
----------------steps :82---------------
-stack : 0, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'vtype', 53, 'id', 62, 'assign', 15, 'EXPRT'
-tokens : [('id', 'a'), ('assign', '='), ('id', 'x'), ('addsub', '+'), ('num', '1'), ('semi', ';'), ('return', 'return'), ('id', 'a'), ('semi', ';'), ('rbrace', '}')]
+---------------steps :10---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'vtype', 5, 'id', 10, 'assign', 15, 'EXPRT'
+tokens : [('vtype', 'int'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('vtype', 'int'), ('id', 'multi'), ('lparen', '('), ('vtype', 'int'), ('id', 'x'), ('comma', ','), ('vtype', 'int'), ('id', 'y'), ('rparen', ')'), ('lbrace', '{'), ('if', 'if'), ('lparen', '('), ('boolstr', 'true'), ('comp', '=='), ('boolstr', 'false'), ('rparen', ')'), ('lbrace', '{'), ('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
 ## state :15| token :EXPRT| action :25
----------------steps :81---------------
-stack : 0, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'vtype', 53, 'id', 62, 'assign', 15, 'EXPRT', 25
-tokens : [('id', 'a'), ('assign', '='), ('id', 'x'), ('addsub', '+'), ('num', '1'), ('semi', ';'), ('return', 'return'), ('id', 'a'), ('semi', ';'), ('rbrace', '}')]
+---------------steps :11---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'vtype', 5, 'id', 10, 'assign', 15, 'EXPRT', 25
+tokens : [('vtype', 'int'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('vtype', 'int'), ('id', 'multi'), ('lparen', '('), ('vtype', 'int'), ('id', 'x'), ('comma', ','), ('vtype', 'int'), ('id', 'y'), ('rparen', ')'), ('lbrace', '{'), ('if', 'if'), ('lparen', '('), ('boolstr', 'true'), ('comp', '=='), ('boolstr', 'false'), ('rparen', ')'), ('lbrace', '{'), ('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
 ## state :25| token :semi| action :r13
----------------steps :80---------------
-stack : 0, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'vtype', 53, 'id', 62, 'assign', 15, 'EXPR'
-tokens : [('id', 'a'), ('assign', '='), ('id', 'x'), ('addsub', '+'), ('num', '1'), ('semi', ';'), ('return', 'return'), ('id', 'a'), ('semi', ';'), ('rbrace', '}')]
+---------------steps :12---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'vtype', 5, 'id', 10, 'assign', 15, 'EXPR'
+tokens : [('vtype', 'int'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('vtype', 'int'), ('id', 'multi'), ('lparen', '('), ('vtype', 'int'), ('id', 'x'), ('comma', ','), ('vtype', 'int'), ('id', 'y'), ('rparen', ')'), ('lbrace', '{'), ('if', 'if'), ('lparen', '('), ('boolstr', 'true'), ('comp', '=='), ('boolstr', 'false'), ('rparen', ')'), ('lbrace', '{'), ('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
 ## state :15| token :EXPR| action :21
----------------steps :79---------------
-stack : 0, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'vtype', 53, 'id', 62, 'assign', 15, 'EXPR', 21
-tokens : [('id', 'a'), ('assign', '='), ('id', 'x'), ('addsub', '+'), ('num', '1'), ('semi', ';'), ('return', 'return'), ('id', 'a'), ('semi', ';'), ('rbrace', '}')]
+---------------steps :13---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'vtype', 5, 'id', 10, 'assign', 15, 'EXPR', 21
+tokens : [('vtype', 'int'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('vtype', 'int'), ('id', 'multi'), ('lparen', '('), ('vtype', 'int'), ('id', 'x'), ('comma', ','), ('vtype', 'int'), ('id', 'y'), ('rparen', ')'), ('lbrace', '{'), ('if', 'if'), ('lparen', '('), ('boolstr', 'true'), ('comp', '=='), ('boolstr', 'false'), ('rparen', ')'), ('lbrace', '{'), ('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :21| token :semi| action :r8
+---------------steps :14---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'vtype', 5, 'id', 10, 'assign', 15, 'RHS'
+tokens : [('vtype', 'int'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('vtype', 'int'), ('id', 'multi'), ('lparen', '('), ('vtype', 'int'), ('id', 'x'), ('comma', ','), ('vtype', 'int'), ('id', 'y'), ('rparen', ')'), ('lbrace', '{'), ('if', 'if'), ('lparen', '('), ('boolstr', 'true'), ('comp', '=='), ('boolstr', 'false'), ('rparen', ')'), ('lbrace', '{'), ('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :15| token :RHS| action :20
+---------------steps :15---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'vtype', 5, 'id', 10, 'assign', 15, 'RHS', 20
+tokens : [('vtype', 'int'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('vtype', 'int'), ('id', 'multi'), ('lparen', '('), ('vtype', 'int'), ('id', 'x'), ('comma', ','), ('vtype', 'int'), ('id', 'y'), ('rparen', ')'), ('lbrace', '{'), ('if', 'if'), ('lparen', '('), ('boolstr', 'true'), ('comp', '=='), ('boolstr', 'false'), ('rparen', ')'), ('lbrace', '{'), ('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :20| token :semi| action :r7
+---------------steps :16---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'vtype', 5, 'ASSIGN'
+tokens : [('vtype', 'int'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('vtype', 'int'), ('id', 'multi'), ('lparen', '('), ('vtype', 'int'), ('id', 'x'), ('comma', ','), ('vtype', 'int'), ('id', 'y'), ('rparen', ')'), ('lbrace', '{'), ('if', 'if'), ('lparen', '('), ('boolstr', 'true'), ('comp', '=='), ('boolstr', 'false'), ('rparen', ')'), ('lbrace', '{'), ('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :5| token :ASSIGN| action :11
+---------------steps :17---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'vtype', 5, 'ASSIGN', 11
+tokens : [('vtype', 'int'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('vtype', 'int'), ('id', 'multi'), ('lparen', '('), ('vtype', 'int'), ('id', 'x'), ('comma', ','), ('vtype', 'int'), ('id', 'y'), ('rparen', ')'), ('lbrace', '{'), ('if', 'if'), ('lparen', '('), ('boolstr', 'true'), ('comp', '=='), ('boolstr', 'false'), ('rparen', ')'), ('lbrace', '{'), ('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :11| token :semi| action :s16
+---------------steps :18---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'vtype', 5, 'ASSIGN', 11, 'semi', 16
+tokens : [('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('vtype', 'int'), ('id', 'multi'), ('lparen', '('), ('vtype', 'int'), ('id', 'x'), ('comma', ','), ('vtype', 'int'), ('id', 'y'), ('rparen', ')'), ('lbrace', '{'), ('if', 'if'), ('lparen', '('), ('boolstr', 'true'), ('comp', '=='), ('boolstr', 'false'), ('rparen', ')'), ('lbrace', '{'), ('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :16| token :vtype| action :r6
+---------------steps :19---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL'
+tokens : [('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('vtype', 'int'), ('id', 'multi'), ('lparen', '('), ('vtype', 'int'), ('id', 'x'), ('comma', ','), ('vtype', 'int'), ('id', 'y'), ('rparen', ')'), ('lbrace', '{'), ('if', 'if'), ('lparen', '('), ('boolstr', 'true'), ('comp', '=='), ('boolstr', 'false'), ('rparen', ')'), ('lbrace', '{'), ('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :17| token :VDECL| action :31
+---------------steps :20---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31
+tokens : [('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('vtype', 'int'), ('id', 'multi'), ('lparen', '('), ('vtype', 'int'), ('id', 'x'), ('comma', ','), ('vtype', 'int'), ('id', 'y'), ('rparen', ')'), ('lbrace', '{'), ('if', 'if'), ('lparen', '('), ('boolstr', 'true'), ('comp', '=='), ('boolstr', 'false'), ('rparen', ')'), ('lbrace', '{'), ('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :31| token :vtype| action :s5
+---------------steps :21---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'vtype', 5
+tokens : [('assign', '='), ('num', '0'), ('semi', ';'), ('vtype', 'int'), ('id', 'multi'), ('lparen', '('), ('vtype', 'int'), ('id', 'x'), ('comma', ','), ('vtype', 'int'), ('id', 'y'), ('rparen', ')'), ('lbrace', '{'), ('if', 'if'), ('lparen', '('), ('boolstr', 'true'), ('comp', '=='), ('boolstr', 'false'), ('rparen', ')'), ('lbrace', '{'), ('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :5| token :id| action :s10
+---------------steps :22---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'vtype', 5, 'id', 10
+tokens : [('num', '0'), ('semi', ';'), ('vtype', 'int'), ('id', 'multi'), ('lparen', '('), ('vtype', 'int'), ('id', 'x'), ('comma', ','), ('vtype', 'int'), ('id', 'y'), ('rparen', ')'), ('lbrace', '{'), ('if', 'if'), ('lparen', '('), ('boolstr', 'true'), ('comp', '=='), ('boolstr', 'false'), ('rparen', ')'), ('lbrace', '{'), ('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :10| token :assign| action :s15
+---------------steps :23---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'vtype', 5, 'id', 10, 'assign', 15
+tokens : [('semi', ';'), ('vtype', 'int'), ('id', 'multi'), ('lparen', '('), ('vtype', 'int'), ('id', 'x'), ('comma', ','), ('vtype', 'int'), ('id', 'y'), ('rparen', ')'), ('lbrace', '{'), ('if', 'if'), ('lparen', '('), ('boolstr', 'true'), ('comp', '=='), ('boolstr', 'false'), ('rparen', ')'), ('lbrace', '{'), ('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :15| token :num| action :s29
+---------------steps :24---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'vtype', 5, 'id', 10, 'assign', 15, 'num', 29
+tokens : [('vtype', 'int'), ('id', 'multi'), ('lparen', '('), ('vtype', 'int'), ('id', 'x'), ('comma', ','), ('vtype', 'int'), ('id', 'y'), ('rparen', ')'), ('lbrace', '{'), ('if', 'if'), ('lparen', '('), ('boolstr', 'true'), ('comp', '=='), ('boolstr', 'false'), ('rparen', ')'), ('lbrace', '{'), ('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :29| token :semi| action :r18
+---------------steps :25---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'vtype', 5, 'id', 10, 'assign', 15, 'EXPRF'
+tokens : [('vtype', 'int'), ('id', 'multi'), ('lparen', '('), ('vtype', 'int'), ('id', 'x'), ('comma', ','), ('vtype', 'int'), ('id', 'y'), ('rparen', ')'), ('lbrace', '{'), ('if', 'if'), ('lparen', '('), ('boolstr', 'true'), ('comp', '=='), ('boolstr', 'false'), ('rparen', ')'), ('lbrace', '{'), ('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :15| token :EXPRF| action :26
+---------------steps :26---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'vtype', 5, 'id', 10, 'assign', 15, 'EXPRF', 26
+tokens : [('vtype', 'int'), ('id', 'multi'), ('lparen', '('), ('vtype', 'int'), ('id', 'x'), ('comma', ','), ('vtype', 'int'), ('id', 'y'), ('rparen', ')'), ('lbrace', '{'), ('if', 'if'), ('lparen', '('), ('boolstr', 'true'), ('comp', '=='), ('boolstr', 'false'), ('rparen', ')'), ('lbrace', '{'), ('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :26| token :semi| action :r15
+---------------steps :27---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'vtype', 5, 'id', 10, 'assign', 15, 'EXPRT'
+tokens : [('vtype', 'int'), ('id', 'multi'), ('lparen', '('), ('vtype', 'int'), ('id', 'x'), ('comma', ','), ('vtype', 'int'), ('id', 'y'), ('rparen', ')'), ('lbrace', '{'), ('if', 'if'), ('lparen', '('), ('boolstr', 'true'), ('comp', '=='), ('boolstr', 'false'), ('rparen', ')'), ('lbrace', '{'), ('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :15| token :EXPRT| action :25
+---------------steps :28---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'vtype', 5, 'id', 10, 'assign', 15, 'EXPRT', 25
+tokens : [('vtype', 'int'), ('id', 'multi'), ('lparen', '('), ('vtype', 'int'), ('id', 'x'), ('comma', ','), ('vtype', 'int'), ('id', 'y'), ('rparen', ')'), ('lbrace', '{'), ('if', 'if'), ('lparen', '('), ('boolstr', 'true'), ('comp', '=='), ('boolstr', 'false'), ('rparen', ')'), ('lbrace', '{'), ('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :25| token :semi| action :r13
+---------------steps :29---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'vtype', 5, 'id', 10, 'assign', 15, 'EXPR'
+tokens : [('vtype', 'int'), ('id', 'multi'), ('lparen', '('), ('vtype', 'int'), ('id', 'x'), ('comma', ','), ('vtype', 'int'), ('id', 'y'), ('rparen', ')'), ('lbrace', '{'), ('if', 'if'), ('lparen', '('), ('boolstr', 'true'), ('comp', '=='), ('boolstr', 'false'), ('rparen', ')'), ('lbrace', '{'), ('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :15| token :EXPR| action :21
+---------------steps :30---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'vtype', 5, 'id', 10, 'assign', 15, 'EXPR', 21
+tokens : [('vtype', 'int'), ('id', 'multi'), ('lparen', '('), ('vtype', 'int'), ('id', 'x'), ('comma', ','), ('vtype', 'int'), ('id', 'y'), ('rparen', ')'), ('lbrace', '{'), ('if', 'if'), ('lparen', '('), ('boolstr', 'true'), ('comp', '=='), ('boolstr', 'false'), ('rparen', ')'), ('lbrace', '{'), ('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :21| token :semi| action :r8
+---------------steps :31---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'vtype', 5, 'id', 10, 'assign', 15, 'RHS'
+tokens : [('vtype', 'int'), ('id', 'multi'), ('lparen', '('), ('vtype', 'int'), ('id', 'x'), ('comma', ','), ('vtype', 'int'), ('id', 'y'), ('rparen', ')'), ('lbrace', '{'), ('if', 'if'), ('lparen', '('), ('boolstr', 'true'), ('comp', '=='), ('boolstr', 'false'), ('rparen', ')'), ('lbrace', '{'), ('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :15| token :RHS| action :20
+---------------steps :32---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'vtype', 5, 'id', 10, 'assign', 15, 'RHS', 20
+tokens : [('vtype', 'int'), ('id', 'multi'), ('lparen', '('), ('vtype', 'int'), ('id', 'x'), ('comma', ','), ('vtype', 'int'), ('id', 'y'), ('rparen', ')'), ('lbrace', '{'), ('if', 'if'), ('lparen', '('), ('boolstr', 'true'), ('comp', '=='), ('boolstr', 'false'), ('rparen', ')'), ('lbrace', '{'), ('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :20| token :semi| action :r7
+---------------steps :33---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'vtype', 5, 'ASSIGN'
+tokens : [('vtype', 'int'), ('id', 'multi'), ('lparen', '('), ('vtype', 'int'), ('id', 'x'), ('comma', ','), ('vtype', 'int'), ('id', 'y'), ('rparen', ')'), ('lbrace', '{'), ('if', 'if'), ('lparen', '('), ('boolstr', 'true'), ('comp', '=='), ('boolstr', 'false'), ('rparen', ')'), ('lbrace', '{'), ('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :5| token :ASSIGN| action :11
+---------------steps :34---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'vtype', 5, 'ASSIGN', 11
+tokens : [('vtype', 'int'), ('id', 'multi'), ('lparen', '('), ('vtype', 'int'), ('id', 'x'), ('comma', ','), ('vtype', 'int'), ('id', 'y'), ('rparen', ')'), ('lbrace', '{'), ('if', 'if'), ('lparen', '('), ('boolstr', 'true'), ('comp', '=='), ('boolstr', 'false'), ('rparen', ')'), ('lbrace', '{'), ('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :11| token :semi| action :s16
+---------------steps :35---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'vtype', 5, 'ASSIGN', 11, 'semi', 16
+tokens : [('id', 'multi'), ('lparen', '('), ('vtype', 'int'), ('id', 'x'), ('comma', ','), ('vtype', 'int'), ('id', 'y'), ('rparen', ')'), ('lbrace', '{'), ('if', 'if'), ('lparen', '('), ('boolstr', 'true'), ('comp', '=='), ('boolstr', 'false'), ('rparen', ')'), ('lbrace', '{'), ('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :16| token :vtype| action :r6
+---------------steps :36---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL'
+tokens : [('id', 'multi'), ('lparen', '('), ('vtype', 'int'), ('id', 'x'), ('comma', ','), ('vtype', 'int'), ('id', 'y'), ('rparen', ')'), ('lbrace', '{'), ('if', 'if'), ('lparen', '('), ('boolstr', 'true'), ('comp', '=='), ('boolstr', 'false'), ('rparen', ')'), ('lbrace', '{'), ('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :31| token :VDECL| action :31
+---------------steps :37---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31
+tokens : [('id', 'multi'), ('lparen', '('), ('vtype', 'int'), ('id', 'x'), ('comma', ','), ('vtype', 'int'), ('id', 'y'), ('rparen', ')'), ('lbrace', '{'), ('if', 'if'), ('lparen', '('), ('boolstr', 'true'), ('comp', '=='), ('boolstr', 'false'), ('rparen', ')'), ('lbrace', '{'), ('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :31| token :vtype| action :s5
+---------------steps :38---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5
+tokens : [('lparen', '('), ('vtype', 'int'), ('id', 'x'), ('comma', ','), ('vtype', 'int'), ('id', 'y'), ('rparen', ')'), ('lbrace', '{'), ('if', 'if'), ('lparen', '('), ('boolstr', 'true'), ('comp', '=='), ('boolstr', 'false'), ('rparen', ')'), ('lbrace', '{'), ('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :5| token :id| action :s10
+---------------steps :39---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10
+tokens : [('vtype', 'int'), ('id', 'x'), ('comma', ','), ('vtype', 'int'), ('id', 'y'), ('rparen', ')'), ('lbrace', '{'), ('if', 'if'), ('lparen', '('), ('boolstr', 'true'), ('comp', '=='), ('boolstr', 'false'), ('rparen', ')'), ('lbrace', '{'), ('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :10| token :lparen| action :s14
+---------------steps :40---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14
+tokens : [('id', 'x'), ('comma', ','), ('vtype', 'int'), ('id', 'y'), ('rparen', ')'), ('lbrace', '{'), ('if', 'if'), ('lparen', '('), ('boolstr', 'true'), ('comp', '=='), ('boolstr', 'false'), ('rparen', ')'), ('lbrace', '{'), ('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :14| token :vtype| action :s19
+---------------steps :41---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'vtype', 19
+tokens : [('comma', ','), ('vtype', 'int'), ('id', 'y'), ('rparen', ')'), ('lbrace', '{'), ('if', 'if'), ('lparen', '('), ('boolstr', 'true'), ('comp', '=='), ('boolstr', 'false'), ('rparen', ')'), ('lbrace', '{'), ('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :19| token :id| action :s34
+---------------steps :42---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'vtype', 19, 'id', 34
+tokens : [('vtype', 'int'), ('id', 'y'), ('rparen', ')'), ('lbrace', '{'), ('if', 'if'), ('lparen', '('), ('boolstr', 'true'), ('comp', '=='), ('boolstr', 'false'), ('rparen', ')'), ('lbrace', '{'), ('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :34| token :comma| action :s43
+---------------steps :43---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'vtype', 19, 'id', 34, 'comma', 43
+tokens : [('id', 'y'), ('rparen', ')'), ('lbrace', '{'), ('if', 'if'), ('lparen', '('), ('boolstr', 'true'), ('comp', '=='), ('boolstr', 'false'), ('rparen', ')'), ('lbrace', '{'), ('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :43| token :vtype| action :s55
+---------------steps :44---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'vtype', 19, 'id', 34, 'comma', 43, 'vtype', 55
+tokens : [('rparen', ')'), ('lbrace', '{'), ('if', 'if'), ('lparen', '('), ('boolstr', 'true'), ('comp', '=='), ('boolstr', 'false'), ('rparen', ')'), ('lbrace', '{'), ('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :55| token :id| action :s63
+---------------steps :45---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'vtype', 19, 'id', 34, 'comma', 43, 'vtype', 55, 'id', 63
+tokens : [('lbrace', '{'), ('if', 'if'), ('lparen', '('), ('boolstr', 'true'), ('comp', '=='), ('boolstr', 'false'), ('rparen', ')'), ('lbrace', '{'), ('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :63| token :rparen| action :r23
+---------------steps :46---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'vtype', 19, 'id', 34, 'comma', 43, 'vtype', 55, 'id', 63, 'MOREARGS'
+tokens : [('lbrace', '{'), ('if', 'if'), ('lparen', '('), ('boolstr', 'true'), ('comp', '=='), ('boolstr', 'false'), ('rparen', ')'), ('lbrace', '{'), ('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :63| token :MOREARGS| action :70
+---------------steps :47---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'vtype', 19, 'id', 34, 'comma', 43, 'vtype', 55, 'id', 63, 'MOREARGS', 70
+tokens : [('lbrace', '{'), ('if', 'if'), ('lparen', '('), ('boolstr', 'true'), ('comp', '=='), ('boolstr', 'false'), ('rparen', ')'), ('lbrace', '{'), ('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :70| token :rparen| action :r22
+---------------steps :48---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'vtype', 19, 'id', 34, 'MOREARGS'
+tokens : [('lbrace', '{'), ('if', 'if'), ('lparen', '('), ('boolstr', 'true'), ('comp', '=='), ('boolstr', 'false'), ('rparen', ')'), ('lbrace', '{'), ('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :34| token :MOREARGS| action :42
+---------------steps :49---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'vtype', 19, 'id', 34, 'MOREARGS', 42
+tokens : [('lbrace', '{'), ('if', 'if'), ('lparen', '('), ('boolstr', 'true'), ('comp', '=='), ('boolstr', 'false'), ('rparen', ')'), ('lbrace', '{'), ('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :42| token :rparen| action :r20
+---------------steps :50---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG'
+tokens : [('lbrace', '{'), ('if', 'if'), ('lparen', '('), ('boolstr', 'true'), ('comp', '=='), ('boolstr', 'false'), ('rparen', ')'), ('lbrace', '{'), ('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :14| token :ARG| action :18
+---------------steps :51---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18
+tokens : [('lbrace', '{'), ('if', 'if'), ('lparen', '('), ('boolstr', 'true'), ('comp', '=='), ('boolstr', 'false'), ('rparen', ')'), ('lbrace', '{'), ('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :18| token :rparen| action :s33
+---------------steps :52---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33
+tokens : [('if', 'if'), ('lparen', '('), ('boolstr', 'true'), ('comp', '=='), ('boolstr', 'false'), ('rparen', ')'), ('lbrace', '{'), ('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :33| token :lbrace| action :s41
+---------------steps :53---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41
+tokens : [('lparen', '('), ('boolstr', 'true'), ('comp', '=='), ('boolstr', 'false'), ('rparen', ')'), ('lbrace', '{'), ('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :41| token :if| action :s51
+---------------steps :54---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'if', 51
+tokens : [('boolstr', 'true'), ('comp', '=='), ('boolstr', 'false'), ('rparen', ')'), ('lbrace', '{'), ('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :51| token :lparen| action :s60
+---------------steps :55---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'if', 51, 'lparen', 60
+tokens : [('comp', '=='), ('boolstr', 'false'), ('rparen', ')'), ('lbrace', '{'), ('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :60| token :boolstr| action :s68
+---------------steps :56---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'if', 51, 'lparen', 60, 'boolstr', 68
+tokens : [('boolstr', 'false'), ('rparen', ')'), ('lbrace', '{'), ('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :68| token :comp| action :r32
+---------------steps :57---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'if', 51, 'lparen', 60, 'CONDL'
+tokens : [('boolstr', 'false'), ('rparen', ')'), ('lbrace', '{'), ('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :60| token :CONDL| action :67
+---------------steps :58---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'if', 51, 'lparen', 60, 'CONDL', 67
+tokens : [('boolstr', 'false'), ('rparen', ')'), ('lbrace', '{'), ('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :67| token :comp| action :s73
+---------------steps :59---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'if', 51, 'lparen', 60, 'CONDL', 67, 'comp', 73
+tokens : [('rparen', ')'), ('lbrace', '{'), ('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :73| token :boolstr| action :s68
+---------------steps :60---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'if', 51, 'lparen', 60, 'CONDL', 67, 'comp', 73, 'boolstr', 68
+tokens : [('lbrace', '{'), ('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :68| token :rparen| action :r32
+---------------steps :61---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'if', 51, 'lparen', 60, 'CONDL', 67, 'comp', 73, 'CONDL'
+tokens : [('lbrace', '{'), ('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :73| token :CONDL| action :67
+---------------steps :62---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'if', 51, 'lparen', 60, 'CONDL', 67, 'comp', 73, 'CONDL', 67
+tokens : [('lbrace', '{'), ('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :67| token :rparen| action :r31
+---------------steps :63---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'if', 51, 'lparen', 60, 'CONDL', 67, 'comp', 73, 'COND'
+tokens : [('lbrace', '{'), ('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :73| token :COND| action :76
+---------------steps :64---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'if', 51, 'lparen', 60, 'CONDL', 67, 'comp', 73, 'COND', 76
+tokens : [('lbrace', '{'), ('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :76| token :rparen| action :r30
+---------------steps :65---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'if', 51, 'lparen', 60, 'COND'
+tokens : [('lbrace', '{'), ('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :60| token :COND| action :66
+---------------steps :66---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'if', 51, 'lparen', 60, 'COND', 66
+tokens : [('lbrace', '{'), ('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :66| token :rparen| action :s72
+---------------steps :67---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'if', 51, 'lparen', 60, 'COND', 66, 'rparen', 72
+tokens : [('id', 'x'), ('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :72| token :lbrace| action :s75
+---------------steps :68---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'if', 51, 'lparen', 60, 'COND', 66, 'rparen', 72, 'lbrace', 75
+tokens : [('assign', '='), ('num', '0'), ('semi', ';'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :75| token :id| action :s54
+---------------steps :69---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'if', 51, 'lparen', 60, 'COND', 66, 'rparen', 72, 'lbrace', 75, 'id', 54
+tokens : [('num', '0'), ('semi', ';'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :54| token :assign| action :s15
+---------------steps :70---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'if', 51, 'lparen', 60, 'COND', 66, 'rparen', 72, 'lbrace', 75, 'id', 54, 'assign', 15
+tokens : [('semi', ';'), ('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :15| token :num| action :s29
+---------------steps :71---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'if', 51, 'lparen', 60, 'COND', 66, 'rparen', 72, 'lbrace', 75, 'id', 54, 'assign', 15, 'num', 29
+tokens : [('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :29| token :semi| action :r18
+---------------steps :72---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'if', 51, 'lparen', 60, 'COND', 66, 'rparen', 72, 'lbrace', 75, 'id', 54, 'assign', 15, 'EXPRF'
+tokens : [('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :15| token :EXPRF| action :26
+---------------steps :73---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'if', 51, 'lparen', 60, 'COND', 66, 'rparen', 72, 'lbrace', 75, 'id', 54, 'assign', 15, 'EXPRF', 26
+tokens : [('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :26| token :semi| action :r15
+---------------steps :74---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'if', 51, 'lparen', 60, 'COND', 66, 'rparen', 72, 'lbrace', 75, 'id', 54, 'assign', 15, 'EXPRT'
+tokens : [('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :15| token :EXPRT| action :25
+---------------steps :75---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'if', 51, 'lparen', 60, 'COND', 66, 'rparen', 72, 'lbrace', 75, 'id', 54, 'assign', 15, 'EXPRT', 25
+tokens : [('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :25| token :semi| action :r13
+---------------steps :76---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'if', 51, 'lparen', 60, 'COND', 66, 'rparen', 72, 'lbrace', 75, 'id', 54, 'assign', 15, 'EXPR'
+tokens : [('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :15| token :EXPR| action :21
+---------------steps :77---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'if', 51, 'lparen', 60, 'COND', 66, 'rparen', 72, 'lbrace', 75, 'id', 54, 'assign', 15, 'EXPR', 21
+tokens : [('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
 ## state :21| token :semi| action :r8
 ---------------steps :78---------------
-stack : 0, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'vtype', 53, 'id', 62, 'assign', 15, 'RHS'
-tokens : [('id', 'a'), ('assign', '='), ('id', 'x'), ('addsub', '+'), ('num', '1'), ('semi', ';'), ('return', 'return'), ('id', 'a'), ('semi', ';'), ('rbrace', '}')]
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'if', 51, 'lparen', 60, 'COND', 66, 'rparen', 72, 'lbrace', 75, 'id', 54, 'assign', 15, 'RHS'
+tokens : [('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
 ## state :15| token :RHS| action :20
----------------steps :77---------------
-stack : 0, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'vtype', 53, 'id', 62, 'assign', 15, 'RHS', 20
-tokens : [('id', 'a'), ('assign', '='), ('id', 'x'), ('addsub', '+'), ('num', '1'), ('semi', ';'), ('return', 'return'), ('id', 'a'), ('semi', ';'), ('rbrace', '}')]
+---------------steps :79---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'if', 51, 'lparen', 60, 'COND', 66, 'rparen', 72, 'lbrace', 75, 'id', 54, 'assign', 15, 'RHS', 20
+tokens : [('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
 ## state :20| token :semi| action :r7
----------------steps :76---------------
-stack : 0, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'vtype', 53, 'ASSIGN'
-tokens : [('id', 'a'), ('assign', '='), ('id', 'x'), ('addsub', '+'), ('num', '1'), ('semi', ';'), ('return', 'return'), ('id', 'a'), ('semi', ';'), ('rbrace', '}')]
-## state :53| token :ASSIGN| action :11
----------------steps :75---------------
-stack : 0, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'vtype', 53, 'ASSIGN', 11
-tokens : [('id', 'a'), ('assign', '='), ('id', 'x'), ('addsub', '+'), ('num', '1'), ('semi', ';'), ('return', 'return'), ('id', 'a'), ('semi', ';'), ('rbrace', '}')]
-## state :11| token :semi| action :s16
----------------steps :74---------------
-stack : 0, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'vtype', 53, 'ASSIGN', 11, 'semi', 16
-tokens : [('assign', '='), ('id', 'x'), ('addsub', '+'), ('num', '1'), ('semi', ';'), ('return', 'return'), ('id', 'a'), ('semi', ';'), ('rbrace', '}')]
-## state :16| token :id| action :r6
----------------steps :73---------------
-stack : 0, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'VDECL'
-tokens : [('assign', '='), ('id', 'x'), ('addsub', '+'), ('num', '1'), ('semi', ';'), ('return', 'return'), ('id', 'a'), ('semi', ';'), ('rbrace', '}')]
-## state :41| token :VDECL| action :49
----------------steps :72---------------
-stack : 0, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'VDECL', 49
-tokens : [('assign', '='), ('id', 'x'), ('addsub', '+'), ('num', '1'), ('semi', ';'), ('return', 'return'), ('id', 'a'), ('semi', ';'), ('rbrace', '}')]
-## state :49| token :id| action :r26
----------------steps :71---------------
-stack : 0, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'STMT'
-tokens : [('assign', '='), ('id', 'x'), ('addsub', '+'), ('num', '1'), ('semi', ';'), ('return', 'return'), ('id', 'a'), ('semi', ';'), ('rbrace', '}')]
-## state :41| token :STMT| action :48
----------------steps :70---------------
-stack : 0, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'STMT', 48
-tokens : [('assign', '='), ('id', 'x'), ('addsub', '+'), ('num', '1'), ('semi', ';'), ('return', 'return'), ('id', 'a'), ('semi', ';'), ('rbrace', '}')]
+---------------steps :80---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'if', 51, 'lparen', 60, 'COND', 66, 'rparen', 72, 'lbrace', 75, 'ASSIGN'
+tokens : [('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :75| token :ASSIGN| action :50
+---------------steps :81---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'if', 51, 'lparen', 60, 'COND', 66, 'rparen', 72, 'lbrace', 75, 'ASSIGN', 50
+tokens : [('id', 'y'), ('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :50| token :semi| action :s59
+---------------steps :82---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'if', 51, 'lparen', 60, 'COND', 66, 'rparen', 72, 'lbrace', 75, 'ASSIGN', 50, 'semi', 59
+tokens : [('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :59| token :id| action :r27
+---------------steps :83---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'if', 51, 'lparen', 60, 'COND', 66, 'rparen', 72, 'lbrace', 75, 'STMT'
+tokens : [('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :75| token :STMT| action :48
+---------------steps :84---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'if', 51, 'lparen', 60, 'COND', 66, 'rparen', 72, 'lbrace', 75, 'STMT', 48
+tokens : [('assign', '='), ('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
 ## state :48| token :id| action :s54
----------------steps :69---------------
-stack : 0, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'STMT', 48, 'id', 54
-tokens : [('id', 'x'), ('addsub', '+'), ('num', '1'), ('semi', ';'), ('return', 'return'), ('id', 'a'), ('semi', ';'), ('rbrace', '}')]
+---------------steps :85---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'if', 51, 'lparen', 60, 'COND', 66, 'rparen', 72, 'lbrace', 75, 'STMT', 48, 'id', 54
+tokens : [('num', '0'), ('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
 ## state :54| token :assign| action :s15
----------------steps :68---------------
-stack : 0, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'STMT', 48, 'id', 54, 'assign', 15
-tokens : [('addsub', '+'), ('num', '1'), ('semi', ';'), ('return', 'return'), ('id', 'a'), ('semi', ';'), ('rbrace', '}')]
-## state :15| token :id| action :None
+---------------steps :86---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'if', 51, 'lparen', 60, 'COND', 66, 'rparen', 72, 'lbrace', 75, 'STMT', 48, 'id', 54, 'assign', 15
+tokens : [('semi', ';'), ('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :15| token :num| action :s29
+---------------steps :87---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'if', 51, 'lparen', 60, 'COND', 66, 'rparen', 72, 'lbrace', 75, 'STMT', 48, 'id', 54, 'assign', 15, 'num', 29
+tokens : [('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :29| token :semi| action :r18
+---------------steps :88---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'if', 51, 'lparen', 60, 'COND', 66, 'rparen', 72, 'lbrace', 75, 'STMT', 48, 'id', 54, 'assign', 15, 'EXPRF'
+tokens : [('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :15| token :EXPRF| action :26
+---------------steps :89---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'if', 51, 'lparen', 60, 'COND', 66, 'rparen', 72, 'lbrace', 75, 'STMT', 48, 'id', 54, 'assign', 15, 'EXPRF', 26
+tokens : [('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :26| token :semi| action :r15
+---------------steps :90---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'if', 51, 'lparen', 60, 'COND', 66, 'rparen', 72, 'lbrace', 75, 'STMT', 48, 'id', 54, 'assign', 15, 'EXPRT'
+tokens : [('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :15| token :EXPRT| action :25
+---------------steps :91---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'if', 51, 'lparen', 60, 'COND', 66, 'rparen', 72, 'lbrace', 75, 'STMT', 48, 'id', 54, 'assign', 15, 'EXPRT', 25
+tokens : [('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :25| token :semi| action :r13
+---------------steps :92---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'if', 51, 'lparen', 60, 'COND', 66, 'rparen', 72, 'lbrace', 75, 'STMT', 48, 'id', 54, 'assign', 15, 'EXPR'
+tokens : [('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :15| token :EXPR| action :21
+---------------steps :93---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'if', 51, 'lparen', 60, 'COND', 66, 'rparen', 72, 'lbrace', 75, 'STMT', 48, 'id', 54, 'assign', 15, 'EXPR', 21
+tokens : [('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :21| token :semi| action :r8
+---------------steps :94---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'if', 51, 'lparen', 60, 'COND', 66, 'rparen', 72, 'lbrace', 75, 'STMT', 48, 'id', 54, 'assign', 15, 'RHS'
+tokens : [('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :15| token :RHS| action :20
+---------------steps :95---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'if', 51, 'lparen', 60, 'COND', 66, 'rparen', 72, 'lbrace', 75, 'STMT', 48, 'id', 54, 'assign', 15, 'RHS', 20
+tokens : [('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :20| token :semi| action :r7
+---------------steps :96---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'if', 51, 'lparen', 60, 'COND', 66, 'rparen', 72, 'lbrace', 75, 'STMT', 48, 'ASSIGN'
+tokens : [('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :48| token :ASSIGN| action :50
+---------------steps :97---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'if', 51, 'lparen', 60, 'COND', 66, 'rparen', 72, 'lbrace', 75, 'STMT', 48, 'ASSIGN', 50
+tokens : [('rbrace', '}'), ('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :50| token :semi| action :s59
+---------------steps :98---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'if', 51, 'lparen', 60, 'COND', 66, 'rparen', 72, 'lbrace', 75, 'STMT', 48, 'ASSIGN', 50, 'semi', 59
+tokens : [('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :59| token :rbrace| action :r27
+---------------steps :99---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'if', 51, 'lparen', 60, 'COND', 66, 'rparen', 72, 'lbrace', 75, 'STMT', 48, 'STMT'
+tokens : [('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :48| token :STMT| action :48
+---------------steps :100---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'if', 51, 'lparen', 60, 'COND', 66, 'rparen', 72, 'lbrace', 75, 'STMT', 48, 'STMT', 48
+tokens : [('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :48| token :rbrace| action :r25
+---------------steps :101---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'if', 51, 'lparen', 60, 'COND', 66, 'rparen', 72, 'lbrace', 75, 'STMT', 48, 'STMT', 48, 'BLOCK'
+tokens : [('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :48| token :BLOCK| action :58
+---------------steps :102---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'if', 51, 'lparen', 60, 'COND', 66, 'rparen', 72, 'lbrace', 75, 'STMT', 48, 'STMT', 48, 'BLOCK', 58
+tokens : [('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :58| token :rbrace| action :r24
+---------------steps :103---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'if', 51, 'lparen', 60, 'COND', 66, 'rparen', 72, 'lbrace', 75, 'STMT', 48, 'BLOCK'
+tokens : [('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :48| token :BLOCK| action :58
+---------------steps :104---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'if', 51, 'lparen', 60, 'COND', 66, 'rparen', 72, 'lbrace', 75, 'STMT', 48, 'BLOCK', 58
+tokens : [('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :58| token :rbrace| action :r24
+---------------steps :105---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'if', 51, 'lparen', 60, 'COND', 66, 'rparen', 72, 'lbrace', 75, 'BLOCK'
+tokens : [('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :75| token :BLOCK| action :78
+---------------steps :106---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'if', 51, 'lparen', 60, 'COND', 66, 'rparen', 72, 'lbrace', 75, 'BLOCK', 78
+tokens : [('return', 'return'), ('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :78| token :rbrace| action :s80
+---------------steps :107---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'if', 51, 'lparen', 60, 'COND', 66, 'rparen', 72, 'lbrace', 75, 'BLOCK', 78, 'rbrace', 80
+tokens : [('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :80| token :return| action :r34
+---------------steps :108---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'if', 51, 'lparen', 60, 'COND', 66, 'rparen', 72, 'lbrace', 75, 'BLOCK', 78, 'rbrace', 80, 'ELSE'
+tokens : [('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :80| token :ELSE| action :82
+---------------steps :109---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'if', 51, 'lparen', 60, 'COND', 66, 'rparen', 72, 'lbrace', 75, 'BLOCK', 78, 'rbrace', 80, 'ELSE', 82
+tokens : [('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :82| token :return| action :r28
+---------------steps :110---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'STMT'
+tokens : [('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :41| token :STMT| action :48
+---------------steps :111---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'STMT', 48
+tokens : [('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :48| token :return| action :r25
+---------------steps :112---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'STMT', 48, 'BLOCK'
+tokens : [('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :48| token :BLOCK| action :58
+---------------steps :113---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'STMT', 48, 'BLOCK', 58
+tokens : [('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :58| token :return| action :r24
+---------------steps :114---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'BLOCK'
+tokens : [('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :41| token :BLOCK| action :47
+---------------steps :115---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'BLOCK', 47
+tokens : [('id', 'x'), ('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :47| token :return| action :s57
+---------------steps :116---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'BLOCK', 47, 'return', 57
+tokens : [('multdiv', '*'), ('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :57| token :id| action :s28
+---------------steps :117---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'BLOCK', 47, 'return', 57, 'id', 28
+tokens : [('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :28| token :multdiv| action :r17
+---------------steps :118---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'BLOCK', 47, 'return', 57, 'EXPRF'
+tokens : [('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :57| token :EXPRF| action :26
+---------------steps :119---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'BLOCK', 47, 'return', 57, 'EXPRF', 26
+tokens : [('id', 'y'), ('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :26| token :multdiv| action :s36
+---------------steps :120---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'BLOCK', 47, 'return', 57, 'EXPRF', 26, 'multdiv', 36
+tokens : [('semi', ';'), ('rbrace', '}'), ('rbrace', '}')]
+## state :36| token :id| action :s28
+---------------steps :121---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'BLOCK', 47, 'return', 57, 'EXPRF', 26, 'multdiv', 36, 'id', 28
+tokens : [('rbrace', '}'), ('rbrace', '}')]
+## state :28| token :semi| action :r17
+---------------steps :122---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'BLOCK', 47, 'return', 57, 'EXPRF', 26, 'multdiv', 36, 'EXPRF'
+tokens : [('rbrace', '}'), ('rbrace', '}')]
+## state :36| token :EXPRF| action :26
+---------------steps :123---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'BLOCK', 47, 'return', 57, 'EXPRF', 26, 'multdiv', 36, 'EXPRF', 26
+tokens : [('rbrace', '}'), ('rbrace', '}')]
+## state :26| token :semi| action :r15
+---------------steps :124---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'BLOCK', 47, 'return', 57, 'EXPRF', 26, 'multdiv', 36, 'EXPRT'
+tokens : [('rbrace', '}'), ('rbrace', '}')]
+## state :36| token :EXPRT| action :45
+---------------steps :125---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'BLOCK', 47, 'return', 57, 'EXPRF', 26, 'multdiv', 36, 'EXPRT', 45
+tokens : [('rbrace', '}'), ('rbrace', '}')]
+## state :45| token :semi| action :r14
+---------------steps :126---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'BLOCK', 47, 'return', 57, 'EXPRT'
+tokens : [('rbrace', '}'), ('rbrace', '}')]
+## state :57| token :EXPRT| action :25
+---------------steps :127---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'BLOCK', 47, 'return', 57, 'EXPRT', 25
+tokens : [('rbrace', '}'), ('rbrace', '}')]
+## state :25| token :semi| action :r13
+---------------steps :128---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'BLOCK', 47, 'return', 57, 'EXPR'
+tokens : [('rbrace', '}'), ('rbrace', '}')]
+## state :57| token :EXPR| action :21
+---------------steps :129---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'BLOCK', 47, 'return', 57, 'EXPR', 21
+tokens : [('rbrace', '}'), ('rbrace', '}')]
+## state :21| token :semi| action :r8
+---------------steps :130---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'BLOCK', 47, 'return', 57, 'RHS'
+tokens : [('rbrace', '}'), ('rbrace', '}')]
+## state :57| token :RHS| action :65
+---------------steps :131---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'BLOCK', 47, 'return', 57, 'RHS', 65
+tokens : [('rbrace', '}'), ('rbrace', '}')]
+## state :65| token :semi| action :s71
+---------------steps :132---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'BLOCK', 47, 'return', 57, 'RHS', 65, 'semi', 71
+tokens : [('rbrace', '}')]
+## state :71| token :rbrace| action :r35
+---------------steps :133---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'BLOCK', 47, 'RETURN'
+tokens : [('rbrace', '}')]
+## state :47| token :RETURN| action :56
+---------------steps :134---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'BLOCK', 47, 'RETURN', 56
+tokens : [('rbrace', '}')]
+## state :56| token :rbrace| action :s64
+---------------steps :135---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'vtype', 5, 'id', 10, 'lparen', 14, 'ARG', 18, 'rparen', 33, 'lbrace', 41, 'BLOCK', 47, 'RETURN', 56, 'rbrace', 64
+tokens : []
+## state :64| token :rbrace| action :r19
+---------------steps :136---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'FDECL'
+tokens : []
+## state :31| token :FDECL| action :32
+---------------steps :137---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'FDECL', 32
+tokens : []
+## state :32| token :rbrace| action :r39
+---------------steps :138---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'FDECL', 32, 'ODECL'
+tokens : []
+## state :32| token :ODECL| action :40
+---------------steps :139---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'FDECL', 32, 'ODECL', 40
+tokens : []
+## state :40| token :rbrace| action :r38
+---------------steps :140---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'ODECL'
+tokens : []
+## state :31| token :ODECL| action :39
+---------------steps :141---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'VDECL', 31, 'ODECL', 39
+tokens : []
+## state :39| token :rbrace| action :r37
+---------------steps :142---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'ODECL'
+tokens : []
+## state :31| token :ODECL| action :39
+---------------steps :143---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'VDECL', 31, 'ODECL', 39
+tokens : []
+## state :39| token :rbrace| action :r37
+---------------steps :144---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'ODECL'
+tokens : []
+## state :17| token :ODECL| action :30
+---------------steps :145---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'ODECL', 30
+tokens : []
+## state :30| token :rbrace| action :s38
+---------------steps :146---------------
+stack : 0, 'class', 6, 'id', 12, 'lbrace', 17, 'ODECL', 30, 'rbrace', 38
+tokens : []
+## state :38| token :$| action :r36
+---------------steps :147---------------
+stack : 0, 'CDECL'
+tokens : []
+## state :0| token :CDECL| action :4
+---------------steps :148---------------
+stack : 0, 'CDECL', 4
+tokens : []
+## state :4| token :$| action :r4
+---------------steps :149---------------
+stack : 0, 'CDECL', 4, 'CODE'
+tokens : []
+## state :4| token :CODE| action :9
+---------------steps :150---------------
+stack : 0, 'CDECL', 4, 'CODE', 9
+tokens : []
+## state :9| token :$| action :r3
+---------------steps :151---------------
+stack : 0, 'CODE'
+tokens : []
+## state :0| token :CODE| action :1
+---------------steps :152---------------
+stack : 0, 'CODE', 1
+tokens : []
+## state :1| token :$| action :acc
+----------------accept!----------------

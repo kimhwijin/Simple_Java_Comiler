@@ -524,4 +524,4 @@ def lexical_analyzer_fn():
     tokens.append(('$','endstr'))
     return tokens
 
-print(tokens)
+#print(tokens)

@@ -1,0 +1,58 @@
+int a = 0;
+vtype id assign num semi
+
+#int main(int x){
+    int a = 0;
+    return 0;
+#}
+vtype id lparen vtype id rparen lbrace vtype id assign literal semi return literal semi rbrace
+
+
+int main(int x){
+    int a = 0;
+    a = x + 1;
+    return a;
+}
+vtype id lparen vtype id rparen lbrace vtype id assign literal semi id assign id addsub literal semi return id semi rbrace
+
+
+#int main(int x, int y){
+    int temp = 0;
+    temp = x * y;
+    if (true == true){
+        temp = x + y;
+    }
+    return true;
+#}
+vtype id lparen vtype id comma vtype id rparen lbrace vtype id assign literal semi id assign id multdiv id semi if lparen boolstr comp boolstr rparen lbrace id assign id addsub id semi rbrace return boolstr semi rbrace
+
+
+int main(int x, int y){
+    int temp = 0;
+    temp = x * y;
+    if (true == true){
+        temp = x + y;
+    }else{
+        temp = x * y;
+    }
+    return true;
+}
+vtype id lparen vtype id comma vtype id rparen lbrace vtype id assign literal semi id assign id multdiv id semi if lparen boolstr comp boolstr rparen lbrace id assign id addsub id semi rbrace else lbrace id assign id multdiv id semi rbrace return boolstr semi rbrace
+
+
+class compiler{
+    int x = 0;
+    int y = 0;
+    int multi(int x, int y){
+        if(true == false){
+            x = 0;
+            y = 0;
+        }
+        return x * y;
+    }
+}
+int i = 0;
+
+class id lbrace vtype id assign literal semi vtype id assign literal semi
+vtype id lparen vtype id comma vtype id rparen lbrace if lparen boolstr comp boolstr rparen lbrace id assign literal semi id assign literal semi rbrace
+return id multdiv id semi rbrace rbrace vtype id assign literal semi
